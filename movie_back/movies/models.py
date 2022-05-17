@@ -1,7 +1,7 @@
 from django.db import models
 
 class Genre(models.Model):
-    genre_id = models.IntegerField(unique=True)
+    # genre_id = models.IntegerField(unique=True)
     genre_name = models.CharField(max_length=50)
 
     def __str__(self):
