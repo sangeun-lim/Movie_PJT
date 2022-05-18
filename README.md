@@ -29,4 +29,4 @@
 
 **2022-05-19**
 
-1. 못다한 pip install 추가 하기 및 등록
+1. 못다한 pip install 추가 하기 및 등록(CORS-Policy 관련 이슈 해결하기 )
