@@ -16,6 +16,6 @@ class Movie(models.Model):
     overview = models.TextField(null=True)
     poster_path = models.CharField(max_length=200, null=True)
     genres = models.ManyToManyField(Genre, related_name='movies', blank=True)
-    video_url = models.CharField(max_length=20, null=True)
+    # video_url = models.CharField(max_length=20, null=True)
     actors = models.JSONField(null=True)
     # director = models.CharField(max_length=100, null=True)
