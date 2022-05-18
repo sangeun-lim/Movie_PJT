@@ -13,7 +13,7 @@ def get_movie_datas():
     total_data = []
 
     # 1페이지부터 500페이지까지 (페이지당 20개, 총 10,000개)
-    for i in range(1, 501):
+    for i in range(1, 2):
         request_url = f"https://api.themoviedb.org/3/movie/popular?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR&page={i}"
         movies = requests.get(request_url).json()
         
@@ -36,39 +36,24 @@ def get_movie_datas():
                     "fields": fields
                 }
 
+                credits_url = f"https://api.themoviedb.org/3/movie/{movie['id']}/credits?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR"
+                credits = requests.get(credits_url).json()
+
+                cast_list = []
+                for credit in credits['cast']:
+                    if credit['order'] < 5:
+                        credit_data = {
+                            'name': credit['name'],
+                            'character': credit['character'],
+                            'profile_path': credit['profile_path']
+                        }
+                        cast_list.append(credit_data)
+                    
+                        fields['cast'] = cast_list
+
                 total_data.append(data)
 
-    with open("movie_data.json", "w", encoding="utf-8") as w:
+    with open("movie_data2.json", "w", encoding="utf-8") as w:
         json.dump(total_data, w, indent="\t", ensure_ascii=False)
 
 get_movie_datas()
-
-
-####
-# poster_path 로 이미지 나오게 하는 url
-# https://image.tmdb.org/t/p/original/[poster_path]
-
-# python manage.py loaddata movie_data.json 장고서버에 저장시키는 명령어
-
-# 장르데이터로 위에처럼 가져와야함
-def get_genres_datas():
-    total_data = []
-
-    request_url = f"https://api.themoviedb.org/3/genre/movie/list?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR"
-    genres = requests.get(request_url).json()
-    
-    for genre in genres['genres']:
-        data = {
-            'pk': genre['id'],
-            'model': 'movies.genre',
-            'fields': {
-                'name': genre['name']
-            }
-        }
-        
-        total_data.append(data)
-
-    with open("genre_data.json", "w", encoding="utf-8") as w:
-        json.dump(total_data, w, indent="\t", ensure_ascii=False)
-
-get_genres_datas()

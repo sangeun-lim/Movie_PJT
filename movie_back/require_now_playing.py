@@ -13,8 +13,8 @@ def get_movie_datas():
     total_data = []
 
     # 1페이지부터 500페이지까지 (페이지당 20개, 총 10,000개)
-    for i in range(1, 501):
-        request_url = f"https://api.themoviedb.org/3/movie/popular?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR&page={i}"
+    for i in range(1, 51):
+        request_url = f"https://api.themoviedb.org/3/movie/now_playing?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR&page={i}"
         movies = requests.get(request_url).json()
         
         for movie in movies['results']:
@@ -38,37 +38,7 @@ def get_movie_datas():
 
                 total_data.append(data)
 
-    with open("movie_data.json", "w", encoding="utf-8") as w:
+    with open("movie_nowplaying_data.json", "w", encoding="utf-8") as w:
         json.dump(total_data, w, indent="\t", ensure_ascii=False)
 
 get_movie_datas()
-
-
-####
-# poster_path 로 이미지 나오게 하는 url
-# https://image.tmdb.org/t/p/original/[poster_path]
-
-# python manage.py loaddata movie_data.json 장고서버에 저장시키는 명령어
-
-# 장르데이터로 위에처럼 가져와야함
-def get_genres_datas():
-    total_data = []
-
-    request_url = f"https://api.themoviedb.org/3/genre/movie/list?api_key=6217d09f5c6803ba98b2b2c5e261803e&language=ko-KR"
-    genres = requests.get(request_url).json()
-    
-    for genre in genres['genres']:
-        data = {
-            'pk': genre['id'],
-            'model': 'movies.genre',
-            'fields': {
-                'name': genre['name']
-            }
-        }
-        
-        total_data.append(data)
-
-    with open("genre_data.json", "w", encoding="utf-8") as w:
-        json.dump(total_data, w, indent="\t", ensure_ascii=False)
-
-get_genres_datas()
