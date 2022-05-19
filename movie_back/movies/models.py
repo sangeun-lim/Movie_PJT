@@ -6,8 +6,8 @@ class Genre(models.Model):
     genre_name = models.CharField(max_length=50)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_genres')
     
-    def __str__(self):
-        return self.genre_name
+    # def __str__(self):
+    #     return self.genre_name
 
 class Movie(models.Model):
     movie_id = models.IntegerField(unique=True)

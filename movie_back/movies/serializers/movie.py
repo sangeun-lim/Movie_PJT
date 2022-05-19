@@ -15,9 +15,11 @@ class MovieSerializer(serializers.ModelSerializer):
 
         class Meta:
             model = Genre
-            fields = ('genre_name')
+            fields = ('genre_name',)
 
-    genres = GenreSerializer(many=True)
+    genres = GenreSerializer(many=True, read_only=True)
+
+    like_users_count = serializers.IntegerField(source='like_users.count', read_only=True)
 
     class Meta:
         model = Movie
