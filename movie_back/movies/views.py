@@ -9,13 +9,11 @@ from .serializers.movie import MovieListSerializer, MovieSerializer
 from .serializers.comment import CommentSerializer
 from .serializers.genre import GenreListSerializer
 
-
 @api_view(['GET'])
 def movie_list(request):
     movies = get_list_or_404(Movie)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
-
 
 @api_view(['GET'])
 def movie_detail(request, movie_id):
@@ -52,15 +50,28 @@ def create_comment(request, movie_id):
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['PUT', 'DELETE'])
+def comment_update_or_delete(request, movie_id, comment_pk):
+    movie = get_object_or_404(Movie, pk=movie_id)
+    comment = get_object_or_404(Comment, pk=comment_pk)
 
-# urlpatterns = [
-#     # movies
-#     path('', views.movie_list),
-#     path('<int:movie_id>/', views.movie_detail),
-#     path('<int:movie_id>/like/', views.like_movie),
-#     # comments
-#     path('<int:movie_id>/comments', views.create_comment),
-#     path('<int:movie_id>/comments/<int:comment_pk>/', views.comment_update_or_delete)
-# ]
+    def update_comment():
+        if request.user == comment.user:
+            serializer = CommentSerializer(instance=comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                comments = movie.comments.all()
+                serializer = CommentSerializer(comments, many=True)
+                return Response(serializer.data)
 
-# "key": "fec41ce1d899173cdc620bda18ad640bb1ca96f5"
+    def delete_comment():
+        if request.user == comment.user:
+            comment.delete()
+            comments = movie.comments.all()
+            serializer = CommentSerializer(comments, many=True)
+            return Response(serializer.data)
+    
+    if request.method == 'PUT':
+        return update_comment()
+    elif request.method == 'DELETE':
+        return delete_comment()
