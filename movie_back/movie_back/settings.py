@@ -36,9 +36,12 @@ INSTALLED_APPS = [
     # local apps
     'accounts',
     'movies',
+    'community',
+
     # 3rd party apps  
     'rest_framework',
     'rest_framework.authtoken',  # token 기반 auth
+    
     # DRF auth
     'dj_rest_auth',  # signup 제외 auth 관련 담당
     'dj_rest_auth.registration',  # signup 담당
@@ -128,9 +131,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -169,9 +172,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         # 모두에게 허용
-        'rest_framework.permissions.AllowAny', 
+        # 'rest_framework.permissions.AllowAny', 
 
         # 인증된 사용자만 모든일이 가능 / 비인증 사용자는 모두 401 Unauthorized
-        # 'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.IsAuthenticated'
     ]
 }

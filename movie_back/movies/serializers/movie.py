@@ -24,3 +24,8 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
+
+
+# 추천알고리즘쓸때 필요하려나요? 혹시몰라서 아직 ..ㅎㅎ
+class MovieRecommendSerializer(serializers.ModelSerializer):
+    pass
