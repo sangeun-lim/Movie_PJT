@@ -86,6 +86,8 @@ def comment_create(request, review_pk):
         serializer = CommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save(review=review, user=request.user)
+            comments = review.review_comments.all()
+            serializer = CommentSerializer(comments, many=True)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     if request.method == 'GET':
@@ -93,32 +95,41 @@ def comment_create(request, review_pk):
     elif request.method == 'POST':
         return create_comment()
 
-# 대댓글 조회 수정 및 삭제
+
+# 댓글 조회 수정 및 삭제
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def comment_update_or_delete(request, comment_pk):
-    comment = get_object_or_404(Review, pk=comment_pk)
+def comment_update_or_delete(request, review_pk, comment_pk):
+    review = get_object_or_404(Review, pk=review_pk)
+    comment = get_object_or_404(Comment, pk=comment_pk)
 
-    # 'GET' 요청 왔을 때, 단일 리뷰의 대댓글 목록 조회
+    # 'GET' 요청 왔을 때, 단일 리뷰의 댓글 목록 조회
     def get_comment():
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
 
-    # 'PUT' 요청 왔을 때, 대댓글 수정
+    # 'PUT' 요청 왔을 때, 댓글 수정
     def update_comment():
-        serializer = CommentSerializer(comment, data=request.data)
-        if not request.user.review_comments.filter(pk=comment_pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN) 
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
+        if request.user == comment.user:
+            serializer = CommentSerializer(comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                comments = review.review_comments.all()
+                serializer = CommentSerializer(comments, many=True)
+                return Response(serializer.data) 
+        # if not request.user.review_comments.filter(pk=comment_pk).exists():
+        #     return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN) 
+
+    # 'DELETE' 요청 왔을 때 댓글 삭제
+    def delete_comment():
+        if request.user == comment.user:
+            comment.delete()
+            comments = review.review_comments.all()
+            serializer = CommentSerializer(comments, many=True)
             return Response(serializer.data) 
 
-    # 'DELETE' 요청 왔을 때 대댓글 삭제
-    def delete_comment():
-        if not request.user.review_comments.filter(pk=comment_pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
-        comment.delete()
-        return Response({'id': comment_pk}, status=status.HTTP_204_NO_CONTENT)
+        # if not request.user.review_comments.filter(pk=comment_pk).exists():
+        #     return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
 
     if request.method == 'GET':
         return get_comment()

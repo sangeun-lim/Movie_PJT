@@ -5,12 +5,11 @@ import router from '@/router'
 export default{
   // namespaced: true,
 
-
   // state는 직접 접근하지 않고
   state: {
     token: localStorage.getItem('token') || '',  // 값이 있으면 기본 token 넣어주고 없으면 '' 넣어주기
     currentUser: {},
-    profile: {},
+    mypage: {},
     authError: null
   },
   
@@ -18,7 +17,7 @@ export default{
   getters: {
     isLoggedIn: state => !!state.token, 
     currentUser: state => state.currentUser,
-    profile: state => state.profile,
+    mypage: state => state.mypage,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.token}`})
   },
@@ -26,10 +25,10 @@ export default{
   mutations: {
     SET_TOKEN: (state, token) => state.token = token,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
-    SET_PROFILE: (state, profile) => state.profile = profile,
+    SET_MYPAGE: (state, mypage) => state.mypage = mypage,
     SET_AUTH_ERROR: (state, error) => state.authError = error
-
   },
+
   actions: {
     saveToken({ commit }, token){
       // state.token 추가
@@ -88,7 +87,7 @@ export default{
        })
         .then(res => commit('SET_CURRENT_USER', res.data))
         .catch(err => {
-          if (err.response.status ===401){
+          if (err.response.status === 401){
             dispatch('removeToken')
             router.push({ name: 'login' })
           }
@@ -145,9 +144,21 @@ export default{
         console.error(err.response)
       })
     },
-
-
-
+    fetchMypage({ commit, getters }, {username}){
+      // GET: mypage url로 요청보내기
+      //  성공하면
+      //    state.mypage에 저장
+      axios({
+        url: drf.accounts.mypage(username),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_MYPAGE', res.data)
+        })
+        .catch(err => {
+          console.error(err.response)
+        })
+    }
   }
-
 }

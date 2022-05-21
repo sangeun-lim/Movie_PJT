@@ -14,25 +14,21 @@ export default {
     // username으로 마이페이지 제공
     mypage: username => HOST + ACCOUNTS + 'mypage/' + username,
   },
+
   community: {
-    reviews: () => HOST + COMMUNITY + 'reviews/',
-    review: reviewPk => HOST + COMMUNITY + 'reviews/' + `${reviewPk}`
+    reviews: () => HOST + COMMUNITY,
+    review: reviewPk => HOST + COMMUNITY + `${reviewPk}/`,
+    likeReview: reviewPk => HOST + COMMUNITY + `${reviewPk}/` + 'like/',
+    comments: reviewPk => HOST + COMMUNITY + `${reviewPk}/` + 'comments/',
+    comment: (reviewPk, commentPk) => HOST + COMMUNITY + `${reviewPk}/` + 'comments/' + `${commentPk}/`,
   },
+
   movies: {
     movies: () => HOST + MOVIES,
     movie: moviePk => HOST + MOVIES + `${moviePk}/`,
     likeMovie: moviePk => HOST + MOVIES + `${moviePk}/` + 'like/',
-    comments: moviePk => HOST + MOVIES + `${moviePk}/` + COMMENTS,
-    //  ???
+    comments: moviePk => HOST + MOVIES + `${moviePk}/` + 'comments/',
+    comment: (moviePk, commentPk) =>  HOST + MOVIES + `${moviePk}/` + 'comments/' + `${commentPk}/`,
   },
-  // articles: {
-  //   // /articles/
-  //   articles: () => HOST + ARTICLES,
-  //   // /articles/1/
-  //   article: articlePk => HOST + ARTICLES + `${articlePk}/`,
-  //   likeArticle: articlePk => HOST + ARTICLES + `${articlePk}/` + 'like/',
-  //   comments: articlePk => HOST + ARTICLES + `${articlePk}/` + COMMENTS,
-  //   comment: (articlePk, commentPk) =>
-  //     HOST + ARTICLES + `${articlePk}/` + COMMENTS + `${commentPk}/`,
-  // },
+
 }

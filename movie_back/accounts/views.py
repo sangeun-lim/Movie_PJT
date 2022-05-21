@@ -16,6 +16,6 @@ User = get_user_model()
 
 @api_view(['GET'])
 def mypage(request, username):
-    user =get_object_or_404(User ,username=username)
+    user = get_object_or_404(User ,username=username)
     serializer = MypageSerializer(user)
     return Response(serializer.data)

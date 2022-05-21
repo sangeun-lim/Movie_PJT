@@ -1,4 +1,5 @@
 <template>
+<!-- css 꾸미기 -->
   <div>
     <h1>로그인 페이지</h1>
 
@@ -15,7 +16,7 @@
         <input v-model="credentials.password" type="password" id="password" required />
       </div>
 
-      <button>확인</button>
+      <button>로그인</button>
     </form>
   </div>
 </template>
