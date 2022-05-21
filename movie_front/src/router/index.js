@@ -2,10 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import store from '../store'
 
+// movies
 import HomeView from '@/views/HomeView.vue'
+import MovieListView from '@/views/MovieListView.vue'
 
+// community
 import CommunityView from '@/views/CommunityView.vue'
 
+// accounts
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
 import NotFound404 from '@/views/NotFound404.vue'
@@ -18,8 +22,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'movies',
+    name: 'home',
     component: HomeView
+  },
+  {
+    path: '/movies',
+    name: 'movies',
+    component: MovieListView
   },
   {
     path: '/community',
