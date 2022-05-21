@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 // import store from '../store'
 
 import HomeView from '@/views/HomeView.vue'
+
+import CommunityView from '@/views/CommunityView.vue'
+
 import LoginView from '@/views/LoginView.vue'
 import LogoutView from '@/views/LogoutView.vue'
-import MovieListView from '@/views/MovieListView.vue'
-import NotFound404 from '@/view/NotFound404.vue'
+import NotFound404 from '@/views/NotFound404.vue'
 import SignupView from '@/views/SignupView.vue'
-import UserProfile from '@/view/UserProfile.vue'
+import MyPageView from '@/views/MypageView.vue'
 
 
 Vue.use(VueRouter)
@@ -18,6 +20,11 @@ const routes = [
     path: '/',
     name: 'movies',
     component: HomeView
+  },
+  {
+    path: '/community',
+    name: 'community',
+    component: CommunityView
   },
   {
     path: '/login',
@@ -30,17 +37,14 @@ const routes = [
     component: LogoutView
   },
   {
-    path:'/profile/:username',
-    name : 'profile',
-    component: UserProfile
+    path:'/mypage/:username',
+    name : 'mypage',
+    component: MyPageView
   },
   {
     path: '/signup',
     name: 'signup',
     component: SignupView
-  },
-  {
-
   },
   {
     path: '/404',

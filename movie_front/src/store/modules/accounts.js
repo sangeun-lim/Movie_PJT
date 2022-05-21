@@ -144,6 +144,7 @@ export default{
         console.error(err.response)
       })
     },
+    
     fetchMypage({ commit, getters }, {username}){
       // GET: mypage url로 요청보내기
       //  성공하면

@@ -1,6 +1,8 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 from ..models import Genre, Movie
+
 
 class MovieListSerializer(serializers.ModelSerializer):
 
@@ -25,7 +27,13 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = '__all__'
 
-
+User = get_user_model()
 # 추천알고리즘쓸때 필요하려나요? 혹시몰라서 아직 ..ㅎㅎ
-class MovieRecommendSerializer(serializers.ModelSerializer):
-    pass
+# class MovieRecommendSerializer(serializers.ModelSerializer):
+    
+#     class UserSerializer(serializers.ModelSerializer):
+#         class Meta:
+#             model = User
+#             fields = ('pk', 'username', )
+    
+#     user = UserSerializer(read_only=True)

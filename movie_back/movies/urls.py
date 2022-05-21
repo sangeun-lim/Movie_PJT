@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.movie_list),
     path('<int:movie_id>/', views.movie_detail),
     path('<int:movie_id>/like/', views.like_movie),
+    # path('recommend/', views.movie_recommend),
+    # path('genre_recommend/<username>/', views.genre_recommend),
     # comments
     path('<int:movie_id>/comments/', views.create_comment),
     path('<int:movie_id>/comments/<int:comment_pk>/', views.comment_update_or_delete),

@@ -27,6 +27,7 @@ class MypageSerializer(serializers.ModelSerializer):
             fields = ('pk', 'title')
     
     reviews = ReviewSerializer(many=True)
+    
     class Meta:
         model = get_user_model()
         fields = ('pk', 'username','like_movies', 'like_genres', 'reviews',)
