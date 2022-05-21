@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 class Genre(models.Model):
     # genre_id = models.IntegerField(unique=True)
     genre_name = models.CharField(max_length=50)
@@ -27,4 +27,4 @@ class Comment(models.Model):
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    score = models.IntegerField(null=True,validators= [MaxValueValidator(5),MinValueValidator(1)])

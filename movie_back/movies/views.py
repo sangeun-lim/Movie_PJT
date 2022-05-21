@@ -5,10 +5,12 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Movie, Comment
-# from .models import Genre
+
 from .serializers.movie import MovieListSerializer, MovieSerializer
 from .serializers.comment import CommentSerializer
-# from .serializers.genre import GenreListSerializer
+
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 @api_view(['GET'])
 def movie_list(request):
@@ -37,6 +39,7 @@ def like_movie(request, movie_id):
         return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def create_comment(request, movie_id):
     user = request.user
     movie = get_object_or_404(Movie, pk=movie_id)
@@ -52,6 +55,7 @@ def create_comment(request, movie_id):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def comment_update_or_delete(request, movie_id, comment_pk):
     movie = get_object_or_404(Movie, pk=movie_id)
     comment = get_object_or_404(Comment, pk=comment_pk)

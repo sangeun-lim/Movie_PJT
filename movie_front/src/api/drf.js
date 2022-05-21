@@ -1,8 +1,7 @@
 const HOST = 'http://localhost:8000/api/v1/'
 
 const ACCOUNTS = 'accounts/'
-const ARTICLES = 'articles/'
-const COMMENTS = 'comments/'
+const COMMUNITY = 'community/'
 const MOVIES = 'movies/'
 
 export default {
@@ -12,8 +11,12 @@ export default {
     signup: () => HOST + ACCOUNTS + 'signup/',
     // Token 으로 현재 user 판단
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
-    // username으로 프로필 제공
-    profile: username => HOST + ACCOUNTS + 'profile/' + username,
+    // username으로 마이페이지 제공
+    mypage: username => HOST + ACCOUNTS + 'mypage/' + username,
+  },
+  community: {
+    reviews: () => HOST + COMMUNITY + 'reviews/',
+    review: reviewPk => HOST + COMMUNITY + 'reviews/' + `${reviewPk}`
   },
   movies: {
     movies: () => HOST + MOVIES,

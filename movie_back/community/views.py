@@ -3,11 +3,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Review, Rate
-# from .models import Comment
+from .models import Review
+from .models import Comment
 from .serializers.comment import CommentSerializer
 from .serializers.review import ReviewSerializer
-from .serializers.rate import RateSerializer
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
@@ -32,7 +31,6 @@ def review_create(request):
 
     if request.method == 'GET':
         return get_review()
-
     elif request.method == 'POST':
         return create_review()
 
@@ -129,39 +127,14 @@ def comment_update_or_delete(request, comment_pk):
     elif request.method == 'DELETE':
         return delete_comment()
 
-# 평점 생성 (별점)
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def rate_create(request, review_pk):
+def review_like(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
-    serializer = RateSerializer(data=request.data)
-    if serializer.is_valid(raise_exception=True):
-        serializer.save(review=review, user=request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-# 평점 수정 및 삭제
-@api_view(['PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
-def rate_update_or_delete(request, rate_pk):
-    rate = get_object_or_404(Rate, pk=rate_pk)
-
-    # 'PUT' 요청 왔을 때 평점 수정
-    def update_rate():
-        serializer = RateSerializer(rate, data=request.data)
-        if not request.user.rates.filter(pk=rate_pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-
-    # 'DELETE' 요청 왔을 때 평점 삭제
-    def delete_rate():
-        if not request.user.rates.filter(pk=rate_pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
-        rate.delete()
-        return Response({'id':rate_pk}, status=status.HTTP_204_NO_CONTENT)
-
-    if request.method == 'PUT':
-        return update_rate()
-    elif request.method == 'DELETE':
-        return delete_rate()
+    user = request.user
+    if review.like_users.filter(pk=user.pk).exists():
+        review.like_users.remove(user)
+        serializer = ReviewSerializer(review)
+        return Response(serializer.data)
+    else :
+        review.like_users.add(user)
+        serializer = ReviewSerializer(review)
+        return Response(serializer.data)
