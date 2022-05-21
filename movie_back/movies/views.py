@@ -86,10 +86,11 @@ def comment_update_or_delete(request, movie_id, comment_pk):
 @api_view(['POST'])
 def search(request):
     keyword = request.data.get('keyword')
+    # keyword = request.data
+    # actors.name 추가 (자꾸 오류뜸)
     movies = Movie.objects.filter(
         Q(title__contains=keyword) |
-        Q(actors__name__contains=keyword) |
         Q(overview__contains=keyword)
     ).distinct()
-    serializer = MovieSerializer(movies, many=True)
+    serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
