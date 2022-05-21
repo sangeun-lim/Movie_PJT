@@ -12,6 +12,8 @@ from .serializers.comment import CommentSerializer
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
+from django.db.models import Q
+
 @api_view(['GET'])
 def movie_list(request):
     movies = get_list_or_404(Movie)
@@ -80,3 +82,14 @@ def comment_update_or_delete(request, movie_id, comment_pk):
         return update_comment()
     elif request.method == 'DELETE':
         return delete_comment()
+
+@api_view(['POST'])
+def search(request):
+    keyword = request.data.get('keyword')
+    movies = Movie.objects.filter(
+        Q(title__contains=keyword) |
+        Q(actors__name__contains=keyword) |
+        Q(overview__contains=keyword)
+    ).distinct()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)

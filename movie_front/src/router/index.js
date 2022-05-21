@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import store from '../store'
 
+import SearchBar from '@/components/SearchBar.vue'
+
 // movies
 import HomeView from '@/views/HomeView.vue'
 import MovieListView from '@/views/MovieListView.vue'
@@ -29,6 +31,11 @@ const routes = [
     path: '/movies',
     name: 'movies',
     component: MovieListView
+  },
+  {
+    path: '/movies/search/:keyword',
+    name: 'SearchMovies',
+    component: SearchBar
   },
   {
     path: '/community',

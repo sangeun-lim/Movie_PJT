@@ -15,7 +15,6 @@ export default {
     movieData: state => state.movieData,
     movie: state => state.movie,
     comments: state => state.comments,
-    
   },
   mutations: {
     SET_MOVIEDATA: (state, movieData) => state.movieData = movieData,
@@ -36,7 +35,10 @@ export default {
         url: drf.movies.movies(),
         method: 'get',
       })
-        .then(res => commit('SET_MOVIEDATA', res.data))
+        .then(res => {
+          commit('SET_MOVIEDATA', res.data)
+          // console.log(res.data)
+        })
         .catch(err => console.error(err.response))
     },
 

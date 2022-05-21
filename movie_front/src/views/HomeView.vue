@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Movie</h1>
+    <router-link to="/movies">Movies</router-link>
     <!-- Search Bar -->
 
     <!-- Movie Recommend -->

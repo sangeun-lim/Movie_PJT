@@ -29,6 +29,7 @@ export default {
     likeMovie: moviePk => HOST + MOVIES + `${moviePk}/` + 'like/',
     comments: moviePk => HOST + MOVIES + `${moviePk}/` + 'comments/',
     comment: (moviePk, commentPk) =>  HOST + MOVIES + `${moviePk}/` + 'comments/' + `${commentPk}/`,
+    search: () => HOST + MOVIES + 'search/'
   },
 
 }
