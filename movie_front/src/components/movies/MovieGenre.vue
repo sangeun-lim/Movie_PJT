@@ -6,6 +6,9 @@
       <option :value=35>코미디</option>
       <option :value=10749>로맨스</option>
     </select>
+    <movie-card
+    v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
+    </movie-card>
   </div>
 </template>
 
@@ -19,7 +22,7 @@
 
   export default {
     name: 'MovieGenre',
-    omponents: {
+    components: {
       MovieCard,
     },
     data () {
@@ -38,7 +41,7 @@
         const searchURL = 'http://localhost:8000/api/v1/movies/genres/'
         axios.post(searchURL, this.genreData)
           .then(res => {
-            console.log(this.genreData)
+            console.log(res.data)
             this.genreMovies = res.data
           })
       },

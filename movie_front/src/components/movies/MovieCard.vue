@@ -6,6 +6,9 @@
       <hr>
       <p>{{ movie.vote_avg }}</p>
       <p>{{ movie.released_date }}</p>
+      <div class="d-flex justify-content-between">
+        <p v-for="genre in movie.genres" :key="genre.pk">{{ genre.genre_name }}</p>
+      </div>
       <!-- <p class="card-text txt_post">{{ movie.overview }}</p> -->
     </div>
   </div>

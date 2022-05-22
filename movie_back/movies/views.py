@@ -31,13 +31,16 @@ def movie_genre(request):
     selected = request.data.get('selected')
     # keyword = request.data
     # actors.name 추가 (자꾸 오류뜸)
-    movies = Movie.objects.all()
-    print(movies)
-    for movie in movies:
-        print(movie)
-        if selected in movie['genres']:
-            serializer = MovieListSerializer(movie, many=True)
-            return Response(serializer.data)
+    movies = Movie.objects.filter(genres=selected).distinct()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
+    # movies = Movie.objects.all()
+    # print(movies)
+    # for movie in movies:
+    #     print(movie)
+    #     if selected in movie['genres']:
+    #         serializer = MovieListSerializer(movie, many=True)
+    #         return Response(serializer.data)
 
 @api_view(['GET'])
 def movie_detail(request, movie_id):
