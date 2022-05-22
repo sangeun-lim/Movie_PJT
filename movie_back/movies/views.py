@@ -21,6 +21,25 @@ def movie_list(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def movie_popular(request):
+    movies = Movie.objects.filter(vote_avg__gte=8).distinct()[:10]
+    serializer = MovieListSerializer(movies, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def movie_genre(request):
+    selected = request.data.get('selected')
+    # keyword = request.data
+    # actors.name 추가 (자꾸 오류뜸)
+    movies = Movie.objects.all()
+    print(movies)
+    for movie in movies:
+        print(movie)
+        if selected in movie['genres']:
+            serializer = MovieListSerializer(movie, many=True)
+            return Response(serializer.data)
+
+@api_view(['GET'])
 def movie_detail(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     serializer = MovieSerializer(movie)

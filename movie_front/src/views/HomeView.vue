@@ -33,7 +33,7 @@
     },
     created() {
       this.fetchMovies()
-      this.RandomMovie.methods.pickRandom()
+      // this.RandomMovie.methods.pickRandom()
     },
   }
 </script>

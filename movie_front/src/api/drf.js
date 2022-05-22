@@ -25,6 +25,7 @@ export default {
 
   movies: {
     movies: () => HOST + MOVIES,
+    moviePopular: () => HOST + MOVIES + 'popular/',
     movie: moviePk => HOST + MOVIES + `${moviePk}/`,
     likeMovie: moviePk => HOST + MOVIES + `${moviePk}/` + 'like/',
     comments: moviePk => HOST + MOVIES + `${moviePk}/` + 'comments/',
