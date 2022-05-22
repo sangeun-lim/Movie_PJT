@@ -8,7 +8,7 @@
     <!-- <p>{{ comment.content }}</p> -->
 
     <span v-if="!isEditing">{{ payload.content }}</span>
-<!-- "review.review_comments.0.content" -->
+    <!-- "review.review_comments.0.content" -->
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
@@ -21,7 +21,7 @@
     </span>
   </li>
 </template>
-"review.review_comments.0.content"
+
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
