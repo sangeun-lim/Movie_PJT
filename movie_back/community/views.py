@@ -48,24 +48,32 @@ def review_update_or_delete(request, review_pk):
 
     # 'GET' 요청일 땐 리뷰를 보여주기만 함 
     def get_review():
-        serializer = ReviewSerializer(review, many=True)
+        serializer = ReviewSerializer(review)
         return Response(serializer.data)
 
     # 'PUT' 요청일 때 권한 파악 후 수정 or 거부
     def update_review():
-        serializer = ReviewSerializer(review, data=request.data)
-        if not request.user.reviews.filter(pk=review.pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+        if request.user == review.user:
+            serializer = ReviewSerializer(instance=review, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data)
+        # serializer = ReviewSerializer(review, data=request.data)
+        # if not request.user.reviews.filter(pk=review.pk).exists():
+        #     return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)
+        # if serializer.is_valid(raise_exception=True):
+        #     serializer.save()
+        #     return Response(serializer.data)
 
     # 'DELETE' 요청일 때 권한 파악 후 삭제 or 거부
     def delete_review():
-        if not request.user.reviews.filter(pk=review.pk).exists():
-            return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)   
-        review.delete()
-        return Response({'id': review_pk}, status=status.HTTP_204_NO_CONTENT)
+        if request.user == review.user:
+            review.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        # if not request.user.reviews.filter(pk=review.pk).exists():
+        #     return Response({'detail': '수정 권한 없음!'}, status=status.HTTP_403_FORBIDDEN)   
+        # review.delete()
+        # return Response({'id': review_pk}, status=status.HTTP_204_NO_CONTENT)
 
     if request.method == 'GET':
         return get_review()
@@ -144,6 +152,7 @@ def comment_update_or_delete(request, review_pk, comment_pk):
     elif request.method == 'DELETE':
         return delete_comment()
 
+@api_view(['POST'])
 def review_like(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
     user = request.user

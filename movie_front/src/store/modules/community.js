@@ -3,7 +3,7 @@ import drf from '@/api/drf'
 import router from '@/router'
 
 import _ from 'lodash'
-// import accounts from './accounts'
+// import accounts from './acconts'
 
 export default {
   // namespaced: true,
@@ -16,6 +16,7 @@ export default {
     reviews: state => state.reviews,
     review: state => state.review,
     isAuthor: (state, getters) => {
+      console.log(state.review.user?.username)
       return state.review.user?.username === getters.currentUser.username
     },
     isReview: state => !_.isEmpty(state.review),
@@ -61,9 +62,7 @@ export default {
         method: 'get',
         headers: getters.authHeader,
       })
-        .then(res => {
-          console.log(res.data),
-          commit('SET_REVIEW', res.data)})
+        .then(res => commit('SET_REVIEW', res.data))
         .catch(err => {
           console.error(err.response)
           if (err.response.status === 404) {
