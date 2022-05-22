@@ -1,12 +1,29 @@
 <template>
   <div>
-
+    <h1>Edit Review</h1>
+    <review-form v-if="isReview" :review="review" aciton="update">
+    </review-form>
   </div>
 </template>
 
 <script>
+import ReviewForm from '@/components/community/ReviewForm.vue'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'ReviewEditView',
+  components: { 
+    ReviewForm 
+  },
+  computed: {
+    ...mapGetters(['review', 'isReview',])
+  },
+  methods: {
+    ...mapActions(['fetchReview'])
+  },
+  create() {
+    this.fetchReview(this.$route.params.reviewPk)
+  },
 }
 </script>
 

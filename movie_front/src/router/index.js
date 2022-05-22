@@ -10,6 +10,9 @@ import MovieListView from '@/views/MovieListView.vue'
 
 // community
 import ReviewListView from '@/views/ReviewListView.vue'
+import ReviewNewView from '@/views/ReviewNewView.vue'
+import ReviewEditView from '@/views/ReviewEditView.vue'
+import ReviewDetailView from '@/views/ReviewDetailView.vue'
 
 // accounts
 import LoginView from '@/views/LoginView.vue'
@@ -41,6 +44,21 @@ const routes = [
     path: '/community',
     name: 'community',
     component: ReviewListView
+  },
+  {
+    path: '/community/new',
+    name: 'reviewNew',
+    component: ReviewNewView
+  },
+  {
+    path: '/community/:reviewPk',
+    name: 'review',
+    component: ReviewDetailView
+  },
+  {
+    path: '/community/:reviewPk/edit',
+    name: 'reviewEdit',
+    component: ReviewEditView
   },
   {
     path: '/login',

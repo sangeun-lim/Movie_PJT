@@ -61,7 +61,9 @@ export default {
         method: 'get',
         headers: getters.authHeader,
       })
-        .then(res => commit('SET_REVIEW', res.data))
+        .then(res => {
+          console.log(res.data),
+          commit('SET_REVIEW', res.data)})
         .catch(err => {
           console.error(err.response)
           if (err.response.status === 404) {
@@ -81,7 +83,7 @@ export default {
       */
       
       axios({
-        url: drf.community.review(),
+        url: drf.community.reviews(),
         method: 'post',
         data: review,
         headers: getters.authHeader,
@@ -89,13 +91,13 @@ export default {
         .then(res => {
           commit('SET_REVIEW', res.data)
           router.push({
-            name: 'community',
+            name: 'review',
             params: { reviewPk: getters.review.pk }
           })
         })
     },
 
-    updateReview({ commit, getters }, { reviewpk, title, content}) {
+    updateReview({ commit, getters }, { reviewPk, title, content}) {
       /* 게시글 수정
       PUT: review URL (게시글 입력정보, token)
         성공하면
@@ -105,15 +107,16 @@ export default {
           에러 메시지 표시
       */
       axios({
-        url: drf.community.review(reviewpk),
+        url: drf.community.review(reviewPk),
         method: 'put',
         data: { title, content },
         headers: getters.authHeader,
       })
         .then(res => {
+          console.log(res.data)
           commit('SET_REVIEW', res.data)
           router.push({
-            name: 'community',
+            name: 'review',
             params: { reviewPk: getters.review.pk }
           })
         })

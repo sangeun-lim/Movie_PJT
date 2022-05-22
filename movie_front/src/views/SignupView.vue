@@ -31,10 +31,10 @@ import { mapActions, mapGetters } from 'vuex'
 import AccountErrorList from '@/components/AccountErrorList.vue'
 
 export default {
+  name: 'SingupView',
   components: {
     AccountErrorList,
   },
-  name: 'SignupView',
   data() {
     return {
       credentials : {

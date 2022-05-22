@@ -3,10 +3,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from django.db.models import Count
+
 from .models import Review
 from .models import Comment
 from .serializers.comment import CommentSerializer
-from .serializers.review import ReviewSerializer
+from .serializers.review import ReviewSerializer, ReviewListSerializer
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
@@ -17,9 +19,13 @@ def review_create(request):
     # 'GET' 요청 왔을때 리뷰들만 보여주기 
     # 제대로 동작하려나 ?
     def get_review():
+        reviews = Review.objects.annotate(
+            comment_count=Count('review_comments', distinct=True),
+            like_count=Count('like_users', distinct=True)
+        ).order_by('-pk')
         # reviews = get_list_or_404(Review.objects.order_by('-pk')))
-        reviews = Review.object.order.by('-pk')
-        serializer = ReviewSerializer(reviews, many=True)
+        # reviews = Review.object.order.by('-pk')
+        serializer = ReviewListSerializer(reviews, many=True)
         return Response(serializer.data)
     
     # 'POST' 요청으로 왔을 때 리뷰 작성
