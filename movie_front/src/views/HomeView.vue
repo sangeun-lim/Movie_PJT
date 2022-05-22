@@ -10,7 +10,7 @@
       <h3>요일 영화 추천</h3>
       <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
       <div>
-        <movie-card></movie-card>
+        <random-movie></random-movie>
       </div>
     </div>
   </div>
@@ -18,12 +18,12 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import MovieCard from '@/components/movies/MovieCard.vue'
+  import RandomMovie from '@/components/movies/RandomMovie.vue'
 
   export default {
     name: 'HomeView',
     components: {
-      MovieCard,
+      RandomMovie,
     },
     computed: {
       ...mapGetters(['movies'])

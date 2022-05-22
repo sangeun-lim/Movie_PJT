@@ -21,10 +21,12 @@
       // NavBar
     },
     methods : {
-      ...mapActions(['fetchCurrentUser'])
+      ...mapActions(['fetchCurrentUser', 'fetchMovies'])
     },
     created() {
       this.fetchCurrentUser()
+      this.fetchMovies()
+
     }
 
   }
