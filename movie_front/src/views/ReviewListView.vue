@@ -8,7 +8,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'CommunityView',
+  name: 'ReviewListView',
   computed: {
     ...mapGetters(['review'])
   },

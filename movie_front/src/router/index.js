@@ -9,7 +9,7 @@ import HomeView from '@/views/HomeView.vue'
 import MovieListView from '@/views/MovieListView.vue'
 
 // community
-import CommunityView from '@/views/CommunityView.vue'
+import ReviewListView from '@/views/ReviewListView.vue'
 
 // accounts
 import LoginView from '@/views/LoginView.vue'
@@ -40,7 +40,7 @@ const routes = [
   {
     path: '/community',
     name: 'community',
-    component: CommunityView
+    component: ReviewListView
   },
   {
     path: '/login',
