@@ -16,8 +16,6 @@ export default {
     reviews: state => state.reviews,
     review: state => state.review,
     isAuthor: (state, getters) => {
-      // console.log(state.review.user?.username)
-      // console.log(getters.currentUser.username)
       return state.review.user?.username === getters.currentUser.username
     },
     isReview: state => !_.isEmpty(state.review),
@@ -97,7 +95,7 @@ export default {
         })
     },
 
-    updateReview({ commit, getters }, { reviewPk, title, content}) {
+    updateReview({ commit, getters }, { pk, title, content}) {
       /* 게시글 수정
       PUT: review URL (게시글 입력정보, token)
         성공하면
@@ -107,13 +105,12 @@ export default {
           에러 메시지 표시
       */
       axios({
-        url: drf.community.review(reviewPk),
+        url: drf.community.review(pk),
         method: 'put',
         data: { title, content },
         headers: getters.authHeader,
       })
         .then(res => {
-          console.log(res.data)
           commit('SET_REVIEW', res.data)
           router.push({
             name: 'review',

@@ -104,7 +104,6 @@ export default{
             LoginView로 이동
       */
       if (getters.isLoggedIn) {
-        console.log('hi')
         axios({
           url: drf.accounts.currentUserInfo(),
           method: 'get',
