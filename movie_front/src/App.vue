@@ -26,7 +26,6 @@
     created() {
       this.fetchCurrentUser()
       this.fetchMovies()
-
     }
 
   }
