@@ -67,34 +67,7 @@ export default{
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
-
-    // signup 끝나고, login 끝나고 쓰임
-    fetchCurrentUser({ commit, getters, dispatch }) {
-      /*
-      get: 사용자가 로그인 했다면 (토큰을 가지고 있다면)
-        currentUserInfo url로 요청보내기
-          성공하면
-            state.currentUser에 저장
-          실패하면( 토큰이 요상하다면 )
-            기존 토큰 삭제
-            LoginView로 이동
-      */
-     if (getters.isLoggedIn){
-       axios({
-         url: drf.accounts.currentUserInfo(),
-         method: 'get',
-         headers: getters.authHeader,
-       })
-        .then(res => commit('SET_CURRENT_USER', res.data))
-        .catch(err => {
-          if (err.response.status === 401){
-            dispatch('removeToken')
-            router.push({ name: 'login' })
-          }
-        })
-     }
-    },
-
+    
     login( {commit, dispatch }, credentials ){
       // POST: 사용자 입력정보를 signup URL로 보내기
       // 성공하면:
@@ -108,7 +81,7 @@ export default{
         method:'post',
         data: credentials
       })
-        .then(res => {
+      .then(res => {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
@@ -118,9 +91,37 @@ export default{
           commit('SET_AUTH_ERROR', err.response.data)
         })
     },
-    
-    logout({ getters, dispatch }){
+
+    // signup 끝나고, login 끝나고 쓰임
+    fetchCurrentUser({ commit, getters, dispatch }) {
       /*
+      GET: 사용자가 로그인 했다면(토큰이 있다면)
+        currentUserInfo URL로 요청보내기
+          성공하면
+            state.cuurentUser에 저장
+          실패하면(토큰이 잘못되었다면)
+            기존 토큰 삭제
+            LoginView로 이동
+      */
+      if (getters.isLoggedIn) {
+        console.log('hi')
+        axios({
+          url: drf.accounts.currentUserInfo(),
+          method: 'get',
+          headers: getters.authHeader,
+        })
+          .then(res => commit('SET_CURRENT_USER', res.data))
+          .catch(err => {
+            if (err.response.status === 401) {
+              dispatch('removeToken')
+              router.push({ name: 'login' })
+            }
+          })
+      }
+    },
+      
+    logout({ getters, dispatch }){
+        /*
       POSt : token을 logout url로 보내기
         성공하면
           토큰 삭제
@@ -134,15 +135,15 @@ export default{
         method: 'post',
         headers: getters.authHeader,
       })
-      .then(() => {
-        dispatch('removeToken')
-        alert('로그아웃 되었습니다.')
-        router.push({ name: 'login' })
-      })
-      // 약간의 수정 필요할수도 
-      .catch(err => {
-        console.error(err.response)
-      })
+        .then(() => {
+          dispatch('removeToken')
+          alert('로그아웃 되었습니다.')
+          router.push({ name: 'login' })
+        })
+        // 약간의 수정 필요할수도 
+        .catch(err => {
+          console.error(err.response)
+        })
     },
     
     fetchMypage({ commit, getters }, {username}){
@@ -160,6 +161,6 @@ export default{
         .catch(err => {
           console.error(err.response)
         })
-    }
-  }
+    },
+  },
 }

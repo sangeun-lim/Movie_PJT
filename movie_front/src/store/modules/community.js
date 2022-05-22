@@ -16,7 +16,8 @@ export default {
     reviews: state => state.reviews,
     review: state => state.review,
     isAuthor: (state, getters) => {
-      console.log(state.review.user?.username)
+      // console.log(state.review.user?.username)
+      // console.log(getters.currentUser.username)
       return state.review.user?.username === getters.currentUser.username
     },
     isReview: state => !_.isEmpty(state.review),
