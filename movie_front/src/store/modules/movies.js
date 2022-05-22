@@ -83,7 +83,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    createComment({ commit, getters }, { moviePk , content }) {
+    createMovieComment({ commit, getters }, { moviePk , content }) {
       /* 댓글 생성
       POST: comments URL(댓글 입력 정보, token)
         성공하면
@@ -105,7 +105,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateComment({ commit, getters }, { moviePk, commentPk, content }) {
+    updateMovieComment({ commit, getters }, { moviePk, commentPk, content }) {
       /* 댓글 수정
       PUT: comment URL(댓글 입력 정보, token)
         성공하면
@@ -127,7 +127,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    deleteComment({ commit, getters }, { moviePk, commentPk }) {
+    deleteMovieComment({ commit, getters }, { moviePk, commentPk }) {
       /* 댓글 삭제
       사용자가 확인을 받고
         DELETE: comment URL (token)
