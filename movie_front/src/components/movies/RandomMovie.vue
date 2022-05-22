@@ -45,7 +45,7 @@ export default {
       this.randomMovies = randomMovie
     }
   },
-  mounted() {
+  created() {
     this.pickRandom()
   },
 

@@ -33,11 +33,8 @@
     },
     created() {
       this.fetchMovies()
+      this.RandomMovie.methods.pickRandom()
     },
-    mounted() {
-      // RandomMovie.methods.pickRandom()
-      // RandomMovie.created()
-    }
   }
 </script>
 
