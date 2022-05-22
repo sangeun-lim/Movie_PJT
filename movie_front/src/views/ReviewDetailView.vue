@@ -19,13 +19,13 @@
     </div>
 
     <hr>
-    <comment-list :comments="article.comments"></comment-list>
+    <comment-list :comments="review.review_comments"></comment-list>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import CommentList from '@/components/CommentList.vue'
+import CommentList from '@/components/community/CommentList.vue'
 
 export default {
   name: 'ReviewDetailView',

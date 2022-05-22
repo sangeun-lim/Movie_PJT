@@ -24,7 +24,7 @@ export default {
   mutations: {
     SET_REVIEWS: (state, reviews) => state.reviews = reviews,
     SET_REVIEW: (state, review) => state.review = review,
-    SET_REVIEW_COMMENTS: (state, comments) => (state.review.comments = comments),
+    SET_REVIEW_COMMENTS: (state, comments) => (state.review.review_comments = comments),
   },
 
   actions: {
