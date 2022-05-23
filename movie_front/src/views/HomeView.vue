@@ -1,11 +1,13 @@
 <template>
   <div>
-    <h1>Movie</h1>
-    <!-- Search Bar -->
-    <!-- Movie Recommend -->
-    <div>
-      <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
-      <random-movie></random-movie>
+    <div v-if="isLoggedIn">
+      <h1>Movie</h1>
+      <!-- Search Bar -->
+      <!-- Movie Recommend -->
+      <div>
+        <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
+        <random-movie></random-movie>
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +25,7 @@
       RandomMovie,
     },
     computed: {
-      ...mapGetters(['movies'])
+      ...mapGetters(['movies', 'isLoggedIn'])
     },
     methods: {
       ...mapActions(['fetchMovies']),

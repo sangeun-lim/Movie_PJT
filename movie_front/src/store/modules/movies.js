@@ -46,6 +46,12 @@ export default {
           // console.log(res.data)
         })
         .catch(err => console.error(err.response))
+        // .catch(err => {
+        //   console.error(err.response)
+        //   if (err.response.status === 401) {
+        //     router.push({ name: 'login' })
+        //   }
+        // })
     },
 
     fetchMovie({ commit }, moviePk) {
