@@ -2,8 +2,15 @@
   <div>
     <!-- {{movie.title}}
     {{movie.overview}} -->
-    <div>
-      {{movie.title}}
+    <ul>
+      <li>
+      <img :src="poster" class="card-img-top" alt="movieImg" style="width: 25vw; min-width: 140px;">
+
+      </li>
+      <br>
+      <p>
+        {{movie.title}}
+      </p>
       <br>
       {{movie.overview}}
       <br>
@@ -17,16 +24,24 @@
       <br>
       <p v-for="actor in movie.actors" :key="actor.name">{{actor.name}}</p>
       <br>
-      <!-- <img :src="poster" class="card-img-top" alt="movieImg"> -->
-    </div>
+
+      <movie-video :title="movie.title"></movie-video>
+      <br>
+      <movie-comment></movie-comment>
+    </ul>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import MovieVideo from '@/components/movies/MovieVideo.vue'
+import MovieComment from '@/components/movies/MovieComment.vue'
 
 export default {
   name: 'MovieDetail',
+  components: {
+    MovieVideo, MovieComment
+  },
   data() {
     return {
       moviePk: this.$route.params.moviePk

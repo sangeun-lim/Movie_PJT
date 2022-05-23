@@ -2,6 +2,8 @@ import router from '@/router'
 import axios from 'axios'
 import drf from '@/api/drf'
 
+const YOUTUBE_URL = 'https://www.googleapis.com/youtube/v3/search'
+
 export default {
   // namespaced : true,
 
@@ -9,17 +11,21 @@ export default {
     movieData: [],
     movie: [],
     comments : [],
-
+    youtubeVideos: [],
   },
   getters: {
     movieData: state => state.movieData,
     movie: state => state.movie,
     comments: state => state.comments,
+    youtubeVideos: state => state.youtubeVideos
   },
   mutations: {
     SET_MOVIEDATA: (state, movieData) => state.movieData = movieData,
     SET_MOVIE: (state, movie) => state.movie = movie,
-    SET_MOVIE_COMMENTS: (state, comments) => state.comments = comments
+    SET_MOVIE_COMMENTS: (state, comments) => state.comments = comments,
+    SEARCH_YOUTUBE: function (state, res) {
+      state.youtubeVideos = res.data.items
+    },
   },
 
   actions: {
@@ -148,6 +154,24 @@ export default {
             })
             .catch(err => console.error(err.response))
         }
+      },
+    searchYoutube: function ({ commit }, searchText) {
+        const params = {
+          q: searchText+'movie',
+          key: process.env.VUE_APP_YOUTUBE_API_KEY,
+          part: 'snippet',
+          type: 'video'
+        }
+        axios({
+          method: 'get',
+          url: YOUTUBE_URL,
+          params,
+        })
+        .then(res => {
+          // console.log(res.data.items)
+          commit('SEARCH_YOUTUBE', res)
+        })
+        .catch(err => console.log(err))
       },
   }
 }
