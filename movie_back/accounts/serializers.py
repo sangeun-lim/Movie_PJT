@@ -6,9 +6,17 @@ from movies.models import Movie, Genre
 class MypageSerializer(serializers.ModelSerializer):
 
     class MovieSerializer(serializers.ModelSerializer):
+        class GenreSerializer(serializers.ModelSerializer):
+        
+            class Meta:
+                model = Genre
+                fields = ('genre_name',)
+
+        genres = GenreSerializer(many=True, read_only=True)
+        
         class Meta: 
             model = Movie
-            fields = ('pk', 'title',)
+            fields = ('movie_id', 'title', 'released_date', 'vote_avg', 'poster_path', 'genres',)
     
     like_movies = MovieSerializer(many=True)
 
