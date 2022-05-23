@@ -12,6 +12,8 @@ urlpatterns = [
     path('popular/', views.movie_popular),
     path('genres/', views.movie_genre),
 
+    path('like_recommend/', views.like_movies),
+
     # path('recommend/', views.movie_recommend),
     # path('genre_recommend/<username>/', views.genre_recommend),
     path('search/', views.search),

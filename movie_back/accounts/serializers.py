@@ -6,13 +6,13 @@ from movies.models import Movie, Genre
 class MypageSerializer(serializers.ModelSerializer):
 
     class MovieSerializer(serializers.ModelSerializer):
-        class GenreSerializer(serializers.ModelSerializer):
+        # class GenreSerializer(serializers.ModelSerializer):
         
-            class Meta:
-                model = Genre
-                fields = ('genre_name',)
+        #     class Meta:
+        #         model = Genre
+        #         fields = ('pk',)
 
-        genres = GenreSerializer(many=True, read_only=True)
+        # genres = GenreSerializer(many=True, read_only=True)
         
         class Meta: 
             model = Movie

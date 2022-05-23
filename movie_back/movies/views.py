@@ -4,7 +4,9 @@ from django.db.models import Count
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Movie, Comment
+
+from movies.serializers.genre import GenreListSerializer
+from .models import Movie, Comment, Genre
 
 from .serializers.movie import MovieListSerializer, MovieSerializer
 from .serializers.comment import CommentSerializer
@@ -41,6 +43,14 @@ def movie_genre(request):
     #     if selected in movie['genres']:
     #         serializer = MovieListSerializer(movie, many=True)
     #         return Response(serializer.data)
+
+@api_view(['POST'])
+def like_movies(request):
+    like_genre_dic = request.data
+    like_genre = max(like_genre_dic, key=like_genre_dic.get)
+    movies = Movie.objects.filter(genres=like_genre).distinct()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def movie_detail(request, movie_id):

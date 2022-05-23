@@ -70,6 +70,7 @@ export default {
   },
   created() {
     this.fetchMovie(this.moviePk)
+    console.log(this.title)
   }
 }
 </script>
