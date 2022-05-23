@@ -1,21 +1,23 @@
 <template>
   <div>
-    <h1>{{ review.title }}</h1>
-    <p>{{ review.content }}</p>
+    <h1>제목 : {{ review.title }}</h1>
+    <div>
+      <p>내용 : {{ review.content }}</p>  
+    </div>
 
     <div v-if="isAuthor">
       <router-link :to="{ name: 'reviewEdit', params: { reviewPk } }">
-        <button>Edit</button>
+        <button class="btn btn-outline-info">Edit</button>
       </router-link>
       |
-      <button @click="deleteReview(reviewPk)">Delete</button>
+      <button @click="deleteReview(reviewPk)" class="btn btn-outline-danger">Delete</button>
     </div>
     
     <div>
       Likeit:
       <button
         @click="likeReview(reviewPk)"
-      >{{ likeCount }}</button>
+      class="btn btn-outline-dark">{{ likeCount }}</button>
     </div>
 
     <hr>

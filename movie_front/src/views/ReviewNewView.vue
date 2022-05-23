@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>New Review</h1>
+    <h1>게시글 작성하기</h1>
     <review-form :review="review" action="create"></review-form>
   </div>
 </template>

@@ -1,8 +1,22 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <label for="comment">comment: </label>
-    <input type="text" id="comment" v-model="content" required>
-    <button>작성</button>
+    <div class="card mb-2">
+      <div class="card-header bg-light">
+              <i class="fa fa-comment fa"></i> REPLY
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <textarea type="text" id="comment" v-model="content" required class="mx-3" cols="70" rows="3"></textarea>
+                <div>
+                  <button class="btn btn-dark mt-3">post reply</button>
+
+                </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+    
   </form>
 </template>
 
@@ -30,9 +44,5 @@ export default {
 </script>
 
 <style>
-.comment-list-form {
-  border: 1px solid black;
-  margin: 1rem;
-  padding: 1rem;
-}
+
 </style>
