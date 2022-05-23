@@ -5,8 +5,6 @@
 
     <!-- Movie Recommend -->
     <div>
-      <!-- 오늘의 요일 넣기 -->
-      <h3>요일 영화 추천</h3>
       <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
       <random-movie></random-movie>
     </div>
@@ -26,11 +24,10 @@
       ...mapGetters(['movies'])
     },
     methods: {
-      ...mapActions(['fetchMovies'])
+      ...mapActions(['fetchMovies']),
     },
     created() {
       this.fetchMovies()
-      // this.RandomMovie.methods.pickRandom()
     },
   }
 </script>

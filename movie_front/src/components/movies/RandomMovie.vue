@@ -1,6 +1,8 @@
 <template>
   <div class="d-flex flex-column justify-content-between align-items-center">
-    <button @click="pickRandom" class="btn btn-outline-success" style="width:300px;">Pick</button>
+    <h3>{{ getToday() }}요일 </h3>
+    <button @click="pickRandom" class="btn btn-outline-success" style="width:300px;">
+      <h3>영화 추천!</h3></button>
     <br>
     <div class="d-flex justify-content-center">
       <div class="col-12">
@@ -50,6 +52,17 @@ export default {
     pickRandom () {
       const randomMovie = _.sampleSize(this.movieData, 5)
       this.randomMovies = randomMovie
+    },
+    getToday () {
+      const today = new Date()
+      const year = today.getFullYear()
+      const month = ('0' + (today.getMonth() + 1)).slice(-2)
+      const day = ('0' + today.getDate()).slice(-2)
+
+      const week = ['일', '월', '화', '수', '목', '금', '토']
+
+      const date = year + '-' + month + '-' + day + ' ' + week[today.getDay()]
+      return date
     }
   },
   created() {
