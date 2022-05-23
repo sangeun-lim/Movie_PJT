@@ -2,7 +2,6 @@
   <div>
     <h1>Movie</h1>
     <!-- Search Bar -->
-
     <!-- Movie Recommend -->
     <div>
       <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
@@ -14,6 +13,9 @@
 <script>
   import { mapActions, mapGetters } from 'vuex'
   import RandomMovie from '@/components/movies/RandomMovie.vue'
+
+  import axios from 'axios'
+
 
   export default {
     name: 'HomeView',
