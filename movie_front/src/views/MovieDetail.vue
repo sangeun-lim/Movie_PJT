@@ -24,10 +24,19 @@
       <br>
       <p v-for="actor in movie.actors" :key="actor.name">{{actor.name}}</p>
       <br>
-
       <movie-video :title="movie.title"></movie-video>
-      <br>
-      <movie-comment></movie-comment>
+      
+      <div v-if="isLoggedIn">
+        <div>
+        Likeit:
+          <button
+            @click="likeMovie(moviePk)"
+          >{{ likeCount }}</button>
+        </div>
+        <br>
+      </div>
+
+      <movie-comment :comments="movie.comments"></movie-comment>
     </ul>
   </div>
 </template>
@@ -48,13 +57,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['movie']),
+    ...mapGetters(['movie', 'isLoggedIn']),
     poster () {
       return `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${this.movie.poster_path}`
+    },
+    likeCount() {
+      return this.movie.like_users?.length
     }
   },
   methods: {
-    ...mapActions(['fetchMovie', 'likeMovie'])
+    ...mapActions(['fetchMovie', 'likeMovie']),
   },
   created() {
     this.fetchMovie(this.moviePk)

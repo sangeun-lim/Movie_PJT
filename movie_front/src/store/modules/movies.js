@@ -10,21 +10,21 @@ export default {
   state: {
     movieData: [],
     movie: [],
-    comments : [],
+    // comments : [],
     youtubeVideos: [],
   },
   getters: {
     movieData: state => state.movieData,
     movie: state => state.movie,
-    comments: state => state.comments,
+    // comments: state => state.comments,
     youtubeVideos: state => state.youtubeVideos
   },
   mutations: {
     SET_MOVIEDATA: (state, movieData) => state.movieData = movieData,
     SET_MOVIE: (state, movie) => state.movie = movie,
     SET_MOVIE_COMMENTS: (state, comments) => state.comments = comments,
-    SEARCH_YOUTUBE: function (state, res) {
-      state.youtubeVideos = res.data.items
+    SEARCH_YOUTUBE: function (state, youtubeVideos) {
+      state.youtubeVideos = youtubeVideos
     },
   },
 
@@ -157,7 +157,7 @@ export default {
       },
     searchYoutube: function ({ commit }, searchText) {
         const params = {
-          q: searchText+'movie',
+          q: searchText + '예고편',
           key: process.env.VUE_APP_YOUTUBE_API_KEY,
           part: 'snippet',
           type: 'video'
@@ -168,8 +168,8 @@ export default {
           params,
         })
         .then(res => {
-          // console.log(res.data.items)
-          commit('SEARCH_YOUTUBE', res)
+          console.log(res.data.items)
+          commit('SEARCH_YOUTUBE', res.data.items)
         })
         .catch(err => console.log(err))
       },

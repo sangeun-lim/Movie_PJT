@@ -23,7 +23,13 @@ export default {
   computed: {
     ...mapGetters(['youtubeVideos'])
   },
+  // methods: {
+  //   function () {
+  //     console.log(this.title)
+  //   }
+  // },
   created() {
+    console.log(this.title)
     this.$store.dispatch('searchYoutube', this.title)
   }
 }

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
 from ..models import Genre, Movie
-
+from .comment import CommentSerializer
 
 class MovieListSerializer(serializers.ModelSerializer):
 
@@ -20,7 +20,7 @@ class MovieSerializer(serializers.ModelSerializer):
             fields = ('genre_name',)
 
     genres = GenreSerializer(many=True, read_only=True)
-
+    comments = CommentSerializer(many=True, read_only=True)
     like_users_count = serializers.IntegerField(source='like_users.count', read_only=True)
 
     class Meta:

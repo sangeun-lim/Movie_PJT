@@ -28,7 +28,7 @@ export default {
   },
 
   actions: {
-    fetchReviews({ commit, getters }) {
+    fetchReviews({ commit }) {
       /* 게시글 목록 받아오기
       GET: reviews URL (token)
         성공하면
@@ -39,7 +39,7 @@ export default {
       axios({
         url: drf.community.reviews(),
         method: 'get',
-        headers: getters.authHeader,
+        // headers: getters.authHeader,
       })
         .then(res => commit('SET_REVIEWS', res.data))
         .catch(err => console.error(err.response))
