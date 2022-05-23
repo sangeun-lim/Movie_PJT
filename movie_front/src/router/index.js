@@ -7,6 +7,7 @@ import SearchBar from '@/components/SearchBar.vue'
 // movies
 import HomeView from '@/views/HomeView.vue'
 import MovieListView from '@/views/MovieListView.vue'
+import MovieDetail from '@/views/MovieDetail.vue'
 
 // community
 import ReviewListView from '@/views/ReviewListView.vue'
@@ -34,6 +35,11 @@ const routes = [
     path: '/movies',
     name: 'movies',
     component: MovieListView
+  },
+  {
+    path: '/movie/:moviePk',
+    name: 'movieDetail',
+    component: MovieDetail
   },
   {
     path: '/movies/search/:keyword',
