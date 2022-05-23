@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <img :src="video.snippet.thumbnails.default.url" alt="thumbnail" @click="videoURL">
-    <div class="youtube-container">
+  <div class="container">
+    <div class="row">
+      <div class="col">
       <iframe :src="videoURL" frameborder="0"></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -15,11 +16,11 @@ export default {
     video: Object,
   },
   computed: {
-      videoURL: function () {
+      videoURL() {
         const { videoId } = this.video.id
         return `https://www.youtube.com/embed/${videoId}`
     },
-  }
+  },
 
 }
 </script>
