@@ -1,12 +1,19 @@
 <template>
-  <div class="d-flex flex-column justify-content-center align-items-center">
+  <div class="d-flex flex-column justify-content-between align-items-center">
     <button @click="pickRandom" class="btn btn-outline-success" style="width:300px;">Pick</button>
     <br>
-    <movie-card
-     v-for="movie in randomMovies"
-     :movie="movie"
-     :key="movie.id"
-      ></movie-card>
+    <div class="d-flex justify-content-center">
+      <div class="col-12">
+        <div class="row">
+          <movie-card
+          v-for="movie in randomMovies"
+          :movie="movie"
+          :key="movie.id"
+          class="mx-3"
+          ></movie-card>
+        </div>
+      </div>
+    </div>
     <!-- <div>
     <div class="card" style="width: 24rem;">
       <img :src="poster" class="card-img-top" alt="movieImg">

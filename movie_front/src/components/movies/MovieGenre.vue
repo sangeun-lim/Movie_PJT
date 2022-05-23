@@ -6,9 +6,9 @@
       <option :value=35>코미디</option>
       <option :value=10749>로맨스</option>
     </select>
-    <movie-card
-    v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
-    </movie-card>
+      <movie-card
+        v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
+      </movie-card>
   </div>
 </template>
 
@@ -18,7 +18,6 @@
   import { mapGetters } from 'vuex'
   import axios from 'axios'
   // import drf from '@/api/drf'
-
 
   export default {
     name: 'MovieGenre',
@@ -41,7 +40,7 @@
         const searchURL = 'http://localhost:8000/api/v1/movies/genres/'
         axios.post(searchURL, this.genreData)
           .then(res => {
-            console.log(res.data)
+            console.log(this.genreData)
             this.genreMovies = res.data
           })
       },

@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Movie</h1>
-    <router-link to="/movies">Movies</router-link>
     <!-- Search Bar -->
 
     <!-- Movie Recommend -->
@@ -9,9 +8,7 @@
       <!-- 오늘의 요일 넣기 -->
       <h3>요일 영화 추천</h3>
       <!-- card 5개 (영화 포스터 / 제목 / 평점 / 개봉날짜 / 줄거리(커서)) -->
-      <div>
-        <random-movie></random-movie>
-      </div>
+      <random-movie></random-movie>
     </div>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-link to="/">Home</router-link>
     <h1>Movie List</h1>
     <search-bar></search-bar>
     <p>genre</p>

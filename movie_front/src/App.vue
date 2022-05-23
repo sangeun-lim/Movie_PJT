@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <!-- <nav-bar></nav-bar> -->
-    <!-- <nav> -->
-      <!-- <router-link to="/">Home</router-link> | -->
-      <!-- <router-link to="/about">About</router-link> -->
-    <!-- </nav> -->
+    <nav-bar></nav-bar>
+
     <router-view/>
   </div>
 </template>
 
 <script>
-  // import NavBar from '@/components/NavBar.vue'
+  import NavBar from '@/components/NavBar.vue'
 
   import { mapActions } from 'vuex'
 
@@ -18,7 +15,7 @@
   export default {
     name: 'App',
     components:{
-      // NavBar
+      NavBar
     },
     methods : {
       ...mapActions(['fetchCurrentUser', 'fetchMovies'])

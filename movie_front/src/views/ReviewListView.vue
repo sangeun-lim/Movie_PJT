@@ -2,6 +2,9 @@
   <div>
     <h1>Community</h1>
     <div>
+      <router-link v-if="isLoggedIn" :to="{ name: 'reviewNew'}">새 글 작성</router-link>
+    </div>
+    <div>
       <div v-for="review in reviews" :key="review.pk">
         {{ review.user.username }}
 
@@ -24,11 +27,11 @@ export default {
     ...mapGetters(['reviews'])
   },
   methods: {
-    ...mapActions(['fetchReviews'])
+    ...mapActions(['fetchReviews','isLoggedIn'])
   },
   created() {
     this.fetchReviews()
-  }
+  },
 }
 </script>
 

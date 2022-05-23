@@ -4,8 +4,8 @@
     <div class="card-body">
       <h5 class="fw-bold">{{ movie.title }}</h5>
       <hr>
-      <p>{{ movie.vote_avg }}</p>
-      <p>{{ movie.released_date }}</p>
+      <p>개봉일 : {{ movie.released_date }}</p>
+      <p>평점 : {{ movie.vote_avg }}</p>
       <div class="d-flex justify-content-between">
         <p v-for="genre in movie.genres" :key="genre.pk">{{ genre.genre_name }}</p>
       </div>
