@@ -19,7 +19,9 @@
             <router-link :to="{name : 'signup'}" class=" text-decoration-none" >Signup</router-link>
           </span>
           <span v-if="isLoggedIn">
-            <router-link :to="{name : 'logout'}" class=" text-decoration-none" >logout</router-link>
+            <router-link :to="{name : 'logout'}" class=" text-decoration-none" >logout |</router-link>
+            <router-link :to="{name : 'mypage'}" class=" text-decoration-none"
+            >| mypage</router-link>
           </span>
         </div>
       </div>
