@@ -8,9 +8,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <textarea type="text" id="comment" v-model="content" required class="mx-3" cols="70" rows="3"></textarea>
+                <input type="number" >
                 <div>
                   <button class="btn btn-dark mt-3">post reply</button>
-
                 </div>
             </li>
         </ul>

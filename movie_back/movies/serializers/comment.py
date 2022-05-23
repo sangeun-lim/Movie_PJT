@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from ..models import Comment
 
-# 세은님 여기에 ()가 없어서 댓글부분에서 에러가 났었네요!!!
 User = get_user_model()
 class CommentSerializer(serializers.ModelSerializer):
     class UserSerializer(serializers.ModelSerializer):

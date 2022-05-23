@@ -1,14 +1,7 @@
 <template>
   <li>
-    <!-- 이부분은 필요없을지도..? -->
-    <!-- <router-link :to="{ name: 'mypage', params: { username: comment.user.username } }">
-      {{ comment.user.username }}
-    </router-link>:  -->
-    
-    <!-- <p>{{ comment.content }}</p> -->
-
     <span v-if="!isEditing">{{ payload.content }}</span>
-    <!-- "review.review_comments.0.content" -->
+
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
       <button @click="onUpdate">Update</button> |
