@@ -22,7 +22,7 @@ export default {
   mutations: {
     SET_MOVIEDATA: (state, movieData) => state.movieData = movieData,
     SET_MOVIE: (state, movie) => state.movie = movie,
-    SET_MOVIE_COMMENTS: (state, comments) => state.comments = comments,
+    SET_MOVIE_COMMENTS: (state, comments) => state.movie.comments = comments,
     SEARCH_YOUTUBE: function (state, youtubeVideos) {
       state.youtubeVideos = youtubeVideos
     },
