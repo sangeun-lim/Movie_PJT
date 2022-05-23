@@ -8,7 +8,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <textarea type="text" id="comment" v-model="content" required class="mx-3" cols="70" rows="3"></textarea>
-                <input type="number" >
+                평점 :<input type="number" v-model="score" required min="1" max="5" >
                 <div>
                   <button class="btn btn-dark mt-3">post reply</button>
                 </div>
@@ -27,7 +27,8 @@ export default {
   name: 'MovieCommentForm',
   data() {
     return {
-      content: ''
+      content: '',
+      score: null,
     }
   },
   computed: {
@@ -36,8 +37,9 @@ export default {
   methods: {
     ...mapActions(['createMovieComment']),
     onSubmit() {
-      this.createMovieComment({ moviePk: this.movie.movie_id, content: this.content, })
+      this.createMovieComment({ moviePk: this.movie.movie_id, content: this.content, score: this.score })
       this.content = ''
+      this.score = ''
     }
   }
 }

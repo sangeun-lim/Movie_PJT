@@ -1,9 +1,11 @@
 <template>
+  <div>
   <li>
-    <span v-if="!isEditing">{{ payload.content }}</span>
+    <span v-if="!isEditing">댓글 : {{ payload.content }} | 평점 :{{payload.score}}</span>
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
+      <input type="number" v-model="payload.score" min="1" max="5">
       <button @click="onUpdate">Update</button> |
       <button @click="switchIsEditing">Cancle</button>
     </span>
@@ -13,6 +15,7 @@
       <button @click="deleteMovieComment(payload)">Delete</button>
     </span>
   </li>
+  </div>
 </template>
 
 <script>
@@ -29,7 +32,8 @@ export default {
       payload: {
         moviePk: this.comment.movie,
         commentPk: this.comment.id,
-        content: this.comment.content
+        content: this.comment.content,
+        score: this.comment.score
       },
     }
   },

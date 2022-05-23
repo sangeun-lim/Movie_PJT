@@ -89,7 +89,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    createMovieComment({ commit, getters }, { moviePk , content }) {
+    createMovieComment({ commit, getters }, { moviePk , content, score }) {
       /* 댓글 생성
       POST: comments URL(댓글 입력 정보, token)
         성공하면
@@ -97,7 +97,7 @@ export default {
         실패하면
           에러 메시지 표시
       */
-      const comment = { content }
+      const comment = { content , score }
 
       axios({
         url: drf.movies.comments(moviePk),
@@ -111,7 +111,7 @@ export default {
         .catch(err => console.error(err.response))
     },
 
-    updateMovieComment({ commit, getters }, { moviePk, commentPk, content }) {
+    updateMovieComment({ commit, getters }, { moviePk, commentPk, content , score}) {
       /* 댓글 수정
       PUT: comment URL(댓글 입력 정보, token)
         성공하면
@@ -119,7 +119,7 @@ export default {
         실패하면
           에러 메시지 표시
       */
-      const comment = { content }
+      const comment = { content , score }
 
       axios({
         url: drf.movies.comment(moviePk, commentPk),
