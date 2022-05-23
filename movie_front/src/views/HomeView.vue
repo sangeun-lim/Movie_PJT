@@ -14,7 +14,7 @@
   import { mapActions, mapGetters } from 'vuex'
   import RandomMovie from '@/components/movies/RandomMovie.vue'
 
-  import axios from 'axios'
+  // import axios from 'axios'
 
 
   export default {
