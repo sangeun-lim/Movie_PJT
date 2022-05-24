@@ -157,9 +157,8 @@ export default{
         .then(res => {
           commit('SET_MYPAGE', res.data)
         })
-        .catch(err => {
-          console.error(err.response)
-        })
+        .catch(err => console.log(err)
+        )
     },
   },
 }
