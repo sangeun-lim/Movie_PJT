@@ -8,6 +8,9 @@ import SearchBar from '@/components/SearchBar.vue'
 import HomeView from '@/views/HomeView.vue'
 import MovieListView from '@/views/MovieListView.vue'
 import MovieDetail from '@/views/MovieDetail.vue'
+import MovieListAll from '@/components/movies/MovieListAll.vue'
+import MoviePopular from '@/components/movies/MoviePopular.vue'
+import MovieGenre from '@/components/movies/MovieGenre.vue'
 
 // community
 import ReviewListView from '@/views/ReviewListView.vue'
@@ -42,6 +45,21 @@ const routes = [
     component: MovieDetail
   },
   {
+    path: '/movies/all',
+    name: 'movieAll',
+    component: MovieListAll
+  },
+  { 
+    path: '/movies/popular',
+    name: 'moviePopular',
+    component: MoviePopular
+  },
+  {
+    path: 'movies/genre',
+    name: 'movieGenre',
+    component: MovieGenre
+  },
+  {
     path: '/movies/search/:keyword',
     name: 'SearchMovies',
     component: SearchBar
@@ -57,14 +75,14 @@ const routes = [
     component: ReviewNewView
   },
   {
-    path: '/community/:reviewPk',
-    name: 'review',
-    component: ReviewDetailView
-  },
-  {
     path: '/community/:reviewPk/edit',
     name: 'reviewEdit',
     component: ReviewEditView
+  },
+  {
+    path: '/community/:reviewPk',
+    name: 'review',
+    component: ReviewDetailView
   },
   {
     path: '/login',

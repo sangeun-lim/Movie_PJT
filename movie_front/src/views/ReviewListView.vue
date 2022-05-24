@@ -20,8 +20,8 @@
           </router-link></th>
             <th>{{review.comment_count}}</th>
             <th>{{review.like_count}}</th>
-            <th>{{review.created_at | moment("dddd, MMMM Do YYYY, h:mm:ss a") }}</th>
-            <th>{{review.updated_at | moment("dddd, MMMM Do YYYY, h:mm:ss a")  }}</th>
+            <th>{{review.created_at | moment("YYYY년 MMMM Do a h:mm") }}</th>
+            <th>{{review.updated_at | moment("YYYY년 MMMM Do a h:mm")  }}</th>
           </tr>
     <br>
     <br>

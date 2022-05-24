@@ -24,7 +24,7 @@ export default {
     ...mapGetters(['youtubeVideos'])
   },
   created() {
-    console.log(this.title)
+    // console.log(this.title)
     this.$store.dispatch('searchYoutube', this.title)
   }
 }

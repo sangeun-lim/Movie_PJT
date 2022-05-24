@@ -1,10 +1,18 @@
 <template>
   <div>
     <select v-model="genreData.selected" @change="selectGenre()" class="form-select" aria-label="Default select example">
-      <option selected>Open this select genre</option>
       <option :value=28>액션</option>
       <option :value=35>코미디</option>
       <option :value=10749>로맨스</option>
+      <option :value=16>애니메이션</option>
+      <option :value=12>모험</option>
+      <option :value=80>범죄</option>
+      <option :value=99>다큐멘터리</option>
+      <option :value=18>드라마</option>
+      <option :value=10751>가족</option>
+      <option :value=14>판타지</option>
+      <option :value=27>공포</option>
+      <option :value=878>SF</option>
     </select>
       <movie-card
         v-for="movie in genreMovies" :key="movie.id" :movie='movie'>

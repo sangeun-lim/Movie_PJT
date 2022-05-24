@@ -71,7 +71,7 @@ export default {
       })
         .then(res => {
           commit('SET_MOVIE', res.data)
-          console.log(res.data.title)
+          // console.log(res.data.title)
         })
         .catch(err => {
           console.error(err.response)
@@ -164,7 +164,7 @@ export default {
             .catch(err => console.error(err.response))
         }
       },
-    searchYoutube: function ({ commit }, searchText) {
+    searchYoutube ({ commit }, searchText) {
         const params = {
           q: searchText + '예고편',
           key: process.env.VUE_APP_YOUTUBE_API_KEY,
@@ -177,8 +177,8 @@ export default {
           params,
         })
         .then(res => {
-          console.log(searchText)
-          console.log(res.data.items)
+          // console.log(searchText)
+          // console.log(res.data.items)
           commit('SEARCH_YOUTUBE', res.data.items)
         })
         .catch(err => console.log(err))

@@ -34,7 +34,7 @@
         method: 'get',
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           this.popularMovies = res.data
         })
     },

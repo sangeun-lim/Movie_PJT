@@ -9,7 +9,7 @@
             <li class="list-group-item">
                 <textarea type="text" id="comment" v-model="content" required class="mx-3" cols="70" rows="3"></textarea>
                 <div>
-                  <button class="btn btn-dark mt-3">post reply</button>
+                  <button class="btn btn-dark mt-3">comment</button>
 
                 </div>
             </li>
@@ -38,7 +38,7 @@ export default {
     onSubmit() {
       this.createComment({ reviewPk: this.review.pk, content: this.content, })
       this.content = ''
-    }
+    },
   }
 }
 </script>

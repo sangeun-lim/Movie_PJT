@@ -2,7 +2,7 @@
   <table>
 
   <li class="comment-list-item">
-    <span v-if="!isEditing" class="border border-dark">{{ payload.content }}</span>
+    <span v-if="!isEditing">{{ payload.content }} || 작성 시간 : {{ this.comment.created_at | moment("YYYY년 MMMM Do a h:mm")  }} || 수정 시간 : {{ this.comment.updated_at | moment("YYYY년 MMMM Do a h:mm")  }}</span>
 
     <span v-if="isEditing">
       <input type="text" v-model="payload.content">
