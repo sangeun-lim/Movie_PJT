@@ -16,7 +16,6 @@
 </template>
 
 
-
 <script>
   import MovieCard from '@/components/movies/MovieCard.vue'
   import MovieNavBar from '@/components/movies/MovieNavBar.vue'
