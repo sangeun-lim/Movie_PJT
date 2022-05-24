@@ -1,9 +1,9 @@
 <template>
-  <div class="card" style="width: 18rem;">
-    <img :src="poster" class="card-img-top" alt="movieImg">
+  <div class="card p-0 m-4 bg-dark border-dark" style="width: 18rem;">
+    <img :src="poster" class="card-img-top a" alt="movieImg" @click="moveToDetailMovie">
     <div class="card-body">
-      <h5 class="fw-bold" @click="moveToDetailMovie">{{ movie.title }}</h5>
-      <hr>
+      <!-- <h3 class="fw-bold" @click="moveToDetailMovie">{{ movie.title }}</h3> -->
+      <!-- <hr> -->
       <p>개봉일 : {{ movie.released_date }}</p>
       <p>평점 : {{ movie.vote_avg }}</p>
       <div class="d-flex justify-content-between">
@@ -36,5 +36,8 @@ export default {
 </script>
 
 <style>
-
+  .a:hover {
+    transform: scale(1.4);
+    cursor: pointer;
+  }
 </style>

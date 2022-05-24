@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="isLoggedIn">
-      <h1>Movie</h1>
       <!-- Search Bar -->
       <!-- Movie Recommend -->
       <div>
