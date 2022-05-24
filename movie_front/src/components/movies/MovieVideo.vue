@@ -1,11 +1,11 @@
 <template>
-  <di>
+  <div>
     <movie-video-item
     v-for="(video, idx) in youtubeVideos"
     :key="idx"
     :video="video"
     ></movie-video-item>
-  </di>
+  </div>
 </template>
 
 <script>
@@ -24,6 +24,7 @@ export default {
     ...mapGetters(['youtubeVideos'])
   },
   created() {
+    console.log(this.title)
     this.$store.dispatch('searchYoutube', this.title)
   }
 }
