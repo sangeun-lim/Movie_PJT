@@ -1,5 +1,5 @@
 <template>
-  <div class="card p-0 m-4 bg-dark border-dark" style="width: 18rem;">
+  <div class="card p-0 bg-dark border-dark" style="width: 18rem;">
     <img :src="poster" class="card-img-top a" alt="movieImg" @click="moveToDetailMovie">
     <div class="card-body">
       <!-- <h3 class="fw-bold" @click="moveToDetailMovie">{{ movie.title }}</h3> -->
