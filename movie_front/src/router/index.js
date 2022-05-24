@@ -55,7 +55,7 @@ const routes = [
     component: MoviePopular
   },
   {
-    path: 'movies/genre',
+    path: '/movies/genre',
     name: 'movieGenre',
     component: MovieGenre
   },

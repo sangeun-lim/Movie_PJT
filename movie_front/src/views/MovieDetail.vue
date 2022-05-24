@@ -24,7 +24,7 @@
       <br>
       <p v-for="actor in movie.actors" :key="actor.name">{{actor.name}}</p>
       <br>
-      <movie-video :title="movie.title"></movie-video>
+      <!-- <movie-video :title="movie.title"></movie-video> -->
       
       <div v-if="isLoggedIn">
         <div>
@@ -43,13 +43,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import MovieVideo from '@/components/movies/MovieVideo.vue'
+// import MovieVideo from '@/components/movies/MovieVideo.vue'
 import MovieComment from '@/components/movies/MovieComment.vue'
 
 export default {
   name: 'MovieDetail',
   components: {
-    MovieVideo, MovieComment
+    // MovieVideo, 
+    MovieComment
   },
   data() {
     return {

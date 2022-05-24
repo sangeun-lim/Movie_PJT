@@ -30,7 +30,6 @@ export default {
     ...mapActions(['fetchMovie']),
     moveToDetailMovie() {
       this.fetchMovie(this.movie.movie_id)
-      // this.$router.push({ name: 'movieDetail' , params: { moviePk: `${this.movie.movie_id}`} })
     }
   }
 }
