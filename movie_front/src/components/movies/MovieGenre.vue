@@ -1,5 +1,7 @@
 <template>
   <div>
+    <movie-nav-bar></movie-nav-bar>
+    <h2>장르 선택</h2>
     <select v-model="genreData.selected" @change="selectGenre()" class="form-select" aria-label="Default select example">
       <option :value=28>액션</option>
       <option :value=35>코미디</option>
@@ -22,7 +24,7 @@
 
 <script>
   import MovieCard from '@/components/movies/MovieCard.vue'
-
+  import MovieNavBar from '@/components/movies/MovieNavBar.vue'
   import { mapGetters } from 'vuex'
   import axios from 'axios'
   // import drf from '@/api/drf'
@@ -31,6 +33,7 @@
     name: 'MovieGenre',
     components: {
       MovieCard,
+      MovieNavBar
     },
     data () {
       return {
