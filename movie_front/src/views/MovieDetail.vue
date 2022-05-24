@@ -68,9 +68,9 @@ export default {
   methods: {
     ...mapActions(['fetchMovie', 'likeMovie']),
   },
-  created() {
-    this.fetchMovie(this.moviePk)
-  }
+  // created() {
+  //   this.fetchMovie(this.moviePk)
+  // }
 }
 </script>
 

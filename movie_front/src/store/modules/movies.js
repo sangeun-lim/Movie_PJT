@@ -177,7 +177,7 @@ export default {
           params,
         })
         .then(res => {
-          // console.log(searchText)
+          console.log(searchText)
           // console.log(res.data.items)
           commit('SEARCH_YOUTUBE', res.data.items)
         })

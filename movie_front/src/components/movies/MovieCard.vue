@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'MovieCard',
   props: {
@@ -26,7 +27,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['fetchMovie']),
     moveToDetailMovie() {
+      this.fetchMovie(this.movie.movie_id)
       this.$router.push({ name: 'movieDetail' , params: { moviePk: `${this.movie.movie_id}`} })
     }
   }
