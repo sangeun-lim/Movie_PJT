@@ -66,9 +66,9 @@
     created() {
       const payload = { username: this.$route.params.username}
       this.fetchMypage(payload)
-      console.log('created!')
+      // console.log('created!')
       this.likeGenre()
-    }
+    },
   }
 </script>
 

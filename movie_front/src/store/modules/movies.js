@@ -81,7 +81,7 @@ export default {
         })
     },
     
-    likeMovie({ commit, getters }, moviePk) {
+    likeMovie({ commit, getters ,dispatch }, moviePk) {
       /* 좋아요
       POST: likemovie URL(token)
         성공하면
@@ -94,7 +94,10 @@ export default {
         method: 'post',
         headers: getters.authHeader,
       })
-        .then(res => commit('SET_MOVIE', res.data))
+        .then(res => {
+          dispatch('fetchMypage', getters.currentUser)
+          commit('SET_MOVIE', res.data)
+        })
         .catch(err => console.error(err.response))
     },
 
