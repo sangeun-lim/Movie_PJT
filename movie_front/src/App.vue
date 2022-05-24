@@ -34,10 +34,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    background-image: url('@/assets/background1.jpg');
-    background-size: cover;
     font-family: 'Gamja Flower', cursive;
     color: white;
-    height: 100vh;
   }
+
 </style>

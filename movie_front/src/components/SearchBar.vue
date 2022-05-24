@@ -5,7 +5,7 @@
       <input type="text" v-model="searchData.keyword">
       <button @click="searchMovie">Search</button>
     </div>
-     <div class="row" >
+    <div class="row" >
       <div class="col-12 col-md-6 col-lg-3 my-3" v-for="movie in searchMovies" :key="movie.id">
         <div class="card jhyuk-img shadow" style="width: 16rem;">
           <!-- <img @click="onMovieSelect(movie)" :movie="movie" :src="movie.poster" class="card-img-top" alt="movie.title"> -->

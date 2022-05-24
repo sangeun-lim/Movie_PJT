@@ -5,10 +5,10 @@
     <search-bar></search-bar>
     <body>
     <div class="container">
-      <div>
-          <movie-card
-          v-for="movie in movieData" :key="movie.id" :movie='movie'>
-          </movie-card>
+      <div class="d-flex">
+        <movie-card
+        v-for="movie in movieData" :key="movie.id" :movie='movie'>
+        </movie-card>
       </div>
     </div>
     </body>
@@ -44,7 +44,7 @@
   height: 300px;
   width: 600px;
   top: 60px;
-  left: calc(50% - 300px);
+  /* left: calc(50% - 300px); */
   display: flex;
 }
 
