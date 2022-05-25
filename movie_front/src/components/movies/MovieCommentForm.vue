@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit" class="comment-list-form">
-    <div class="card mb-2">
+    <!-- <div class="card mb-2">
       <div class="card-header bg-light">
               <i class="fa fa-comment fa"></i> REPLY
       </div>
@@ -15,8 +15,27 @@
             </li>
         </ul>
       </div>
-    </div>
-    
+    </div> -->
+    <table style="padding-top:50px;" align=center width=700 border=0 cellpadding=2>
+      <tr>
+        <td style="background-color:pink;">
+          <table class="table2">
+            <tr style="color:black">
+              <td><i class="fa fa-comment fa"></i> 댓글 작성 <i class="fa fa-comment fa"></i></td>
+            </tr>
+
+            <tr>
+              <td><textarea type="text" id="comment" v-model="content" required class="mx-3" cols="70" rows="4"></textarea></td>
+              <td>평점 :<input type="number" v-model="score" required min="1" max="5" ></td>
+            </tr>
+
+            <div>
+              <button class="btn btn-dark mt-3">comment</button>
+            </div>
+          </table>
+        </td>
+      </tr>
+    </table>
   </form>
 </template>
 
