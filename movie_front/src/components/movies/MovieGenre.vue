@@ -3,7 +3,7 @@
     <movie-nav-bar></movie-nav-bar>
     <!-- <h2 class="m-4">장르별 영화</h2> -->
     <h1 class="neon" data-text="U">S<span class="flicker-slow">EL</span>EC<span class="flicker-fast">T</span> BY GEN<span class="flicker-slow">R</span>E</h1>
-    <hr>
+    <br>
     <form>
       <label for="">선택</label>
       <select v-model="genreData.selected" @change="selectGenre()" >

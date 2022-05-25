@@ -5,7 +5,7 @@
     
     <div class="section body container">
       <form @submit.prevent="signup(credentials)" class="section text-center">
-        <h4 class="mb-4 pb-3">Sign Up</h4>
+        <h1 class="mb-4 pb-3">Sign Up</h1>
         <div class="form-group">
           <input v-model="credentials.username" type="text" id="username" class="form-style" placeholder="ID" autocomplete="off" required />
           <i class="input-icon uil uil-user"></i>
@@ -18,7 +18,7 @@
           <input v-model="credentials.password2" type="password" id="password2" class="form-style" placeholder="Password Check Up" autocomplete="off"  required />
           <i class="input-icon uil uil-lock-alt"></i>
         </div>
-        <button href="#" class="btn mt-4">submit</button>
+        <button href="#" class="custom-btn btn-14 mt-5">submit</button>
       </form>
     </div>
 
@@ -57,10 +57,6 @@
           </div>
         </div>
     </form> -->
-          <div class="bg-blue py-4">
-            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2022. All rights reserved.</small>
-            </div>
-          </div>
   </div>
 </template>
 
@@ -93,6 +89,63 @@ export default {
 </script>
 
 <style scoped>
+/* title */
+@keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(230, 100%, 95%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+}
+
+h1 {
+  margin: auto;
+  font-size: 4rem;
+  font-weight: 300;
+  animation: lights 5s 750ms linear infinite;
+}
+
+/* form */
   .body {
     font-family: "Poppins", sans-serif;
   }
@@ -103,14 +156,7 @@ export default {
   .link:hover {
     color: #ffeba7;
   }
-  /* p {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  h4 {
-    font-weight: 600;
-  } */
+
   .section {
     position: relative;
     width: 100%;
@@ -204,43 +250,65 @@ export default {
     transition: all 200ms linear;
   }
 
-  .btn {
-    border-radius: 4px;
-    height: 44px;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    -webkit-transition: all 200ms linear;
-    transition: all 200ms linear;
-    padding: 0 30px;
-    letter-spacing: 1px;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -ms-justify-content: center;
-    justify-content: center;
-    -ms-flex-pack: center;
-    text-align: center;
-    border: none;
-    background-color: #ffeba7;
-    color: #102770;
-    box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
-  }
-  .btn:active,
-  .btn:focus {
-    background-color: #102770;
-    color: #ffeba7;
-    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-  }
-  .btn:hover {
-    background-color: #102770;
-    color: #ffeba7;
-    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-  }
+  /* button */
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.custom-btn {
+  color: #fff;
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-14 {
+  position: relative;
+  color: #FE1DAD;
+  border: none;
+  z-index: 2;
+}
+.btn-14:before,
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  border: 1px solid;
+  
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+.btn-14:before{
+   top: 0;
+   left: 0;
+   border-bottom-color: transparent;
+   border-right-color: transparent;
+   border-top-color: #FE1DAD;
+   border-left-color: #FE1DAD;
+}
+.btn-14:after{
+   bottom: 0;
+   right: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   border-bottom-color: #FE1DAD;
+   border-right-color: #FE1DAD;
+}
+.btn-14:hover:before,
+.btn-14:hover:after {
+  border-color: #FE1DAD;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 5px #FE1DAD, 0 0 5px #FE1DAD inset;
+}
 </style>

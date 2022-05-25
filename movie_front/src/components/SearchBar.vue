@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div>
-      <input type="text" v-model="searchData.keyword" class="mx-2">
-      <button @click="searchMovie">Search</button>
+    <div class="d-flex justify-content-center">
+      <div>
+        <input type="text" v-model="searchData.keyword" class="mx-2 search-input mb-0 pb-0" placeholder="Search">
+        <hr>
+      </div>
+      <button @click="searchMovie" class="custom-btn btn-14">Search</button>
     </div>
     <div class="m-5">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
@@ -107,4 +110,76 @@ export default {
   left: 20px;
   top: 15px;
 }
+
+.search-input {  
+  width: 400px;
+  height: 30px;
+  background: transparent;
+  border-radius: 4px;
+  color: white;
+  border: black;
+}
+
+/* button */
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.custom-btn {
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-14 {
+  position: relative;
+  color: #FE1DAD;
+  border: none;
+  z-index: 2;
+}
+.btn-14:before,
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  border: 1px solid;
+  
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+.btn-14:before{
+   top: 0;
+   left: 0;
+   border-bottom-color: transparent;
+   border-right-color: transparent;
+   border-top-color: #FE1DAD;
+   border-left-color: #FE1DAD;
+}
+.btn-14:after{
+   bottom: 0;
+   right: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   border-bottom-color: #FE1DAD;
+   border-right-color: #FE1DAD;
+}
+.btn-14:hover:before,
+.btn-14:hover:after {
+  border-color: #FE1DAD;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 5px #FE1DAD, 0 0 5px #FE1DAD inset;
+}
+
 </style>

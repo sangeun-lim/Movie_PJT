@@ -28,9 +28,11 @@
           </tr>
     <br>
     <br>
-    <div style="width:100px; height:30px; border: solid pink; margin-left:90%;">
-      <router-link v-if="isLoggedIn" :to="{ name: 'reviewNew'}" class="text-decoration-none" style="color: #f3c6e4 ">새 글 작성</router-link>
-    </div>
+    <!-- <div style="width:100px; height:30px; border: solid pink; margin-left:90%;"> -->
+      <div class="frame">
+        <router-link v-if="isLoggedIn" :to="{ name: 'reviewNew'}" class="text-decoration-none custom-btn btn-14">Create</router-link>\
+      </div>
+    <!-- </div> -->
         </thead>
 
   </table>
@@ -77,6 +79,7 @@ td {
   padding: 5px;
 }
 
+ /* title */
 .wrapper{
   width: 100%;
   grid-gap: 0.2rem;
@@ -151,4 +154,67 @@ td {
     letter-spacing: 2px;
   }
 }
+
+/* button */
+.frame {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.custom-btn {
+  color: #fff;
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn-14 {
+  position: relative;
+  color: #FE1DAD;
+  border: none;
+  z-index: 2;
+}
+.btn-14:before,
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  border: 1px solid;
+  
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+.btn-14:before{
+   top: 0;
+   left: 0;
+   border-bottom-color: transparent;
+   border-right-color: transparent;
+   border-top-color: #FE1DAD;
+   border-left-color: #FE1DAD;
+}
+.btn-14:after{
+   bottom: 0;
+   right: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   border-bottom-color: #FE1DAD;
+   border-right-color: #FE1DAD;
+}
+.btn-14:hover:before,
+.btn-14:hover:after {
+  border-color: #FE1DAD;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 0 5px #FE1DAD, 0 0 5px #FE1DAD inset;
+}
+
 </style>

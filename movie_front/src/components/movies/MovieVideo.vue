@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row row-cols-5">
+    <div class="row row-cols-3">
       <movie-video-item class="col"
       v-for="(video, idx) in youtubeVideos"
       :key="idx"

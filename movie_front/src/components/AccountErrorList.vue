@@ -3,9 +3,9 @@
     <p v-for="(errors, field) in authError" :key="field">
       {{ field }}
       <ul>
-        <li v-for="(error, idx) in errors" :key="idx">
+        <p v-for="(error, idx) in errors" :key="idx">
           {{ error }}
-        </li>
+        </p>
       </ul>
     </p>
   </div>

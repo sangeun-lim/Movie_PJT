@@ -181,8 +181,8 @@ export default {
         })
         .then(res => {
           console.log(searchText)
-          // console.log(res.data.items)
-          commit('SEARCH_YOUTUBE', res.data.items)
+          // console.log(res.data.items.slice(0, 3))
+          commit('SEARCH_YOUTUBE', res.data.items.slice(0, 3))
         })
         .catch(err => console.log(err))
       },
