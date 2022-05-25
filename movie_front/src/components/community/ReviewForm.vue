@@ -75,6 +75,7 @@ import { mapActions } from 'vuex'
       },
     },
   }
+  
 </script>
 
 <style>
