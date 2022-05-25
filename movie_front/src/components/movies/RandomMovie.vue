@@ -1,7 +1,6 @@
 <template>
   <div class="d-flex flex-column justify-content-between">
     <!-- <h4 class="m-3 text-start">{{ getToday() }}요일 </h4> -->
-    <h1 class="mt-5 title-font">🎬</h1>
     <!-- <button @click="pickRandom" class="btn btn-outline-success" style="width:300px;"> -->
       <!-- <h3>영화 추천!</h3></button> -->
     <!-- <div class="d-flex justify-content-center">
