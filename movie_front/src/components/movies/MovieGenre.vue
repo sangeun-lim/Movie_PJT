@@ -2,7 +2,7 @@
   <div>
     <movie-nav-bar></movie-nav-bar>
     <!-- <h2 class="m-4">장르별 영화</h2> -->
-    <h1 class="neon" data-text="U">SEL<span class="flicker-slow">ECT </span>BY<span class="flicker-fast"> GE</span>NRE</h1>
+    <h1 class="neon" data-text="U">S<span class="flicker-slow">EL</span>EC<span class="flicker-fast">T</span> BY GEN<span class="flicker-slow">R</span>E</h1>
     <hr>
     <form>
       <label for="">선택</label>

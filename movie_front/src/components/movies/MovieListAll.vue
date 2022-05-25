@@ -2,7 +2,7 @@
   <div>
     <movie-nav-bar></movie-nav-bar>
     <!-- <h2 class="m-4">전체 영화</h2> -->
-    <h1 class="neon" data-text="U"><span class="flicker-slow">A</span>LL M<span class="flicker-slow">O</span>VI<span class="flicker-fast">E</span>S</h1>
+    <h1 class="neon" data-text="U">A<span class="flicker-slow">L</span>L M<span class="flicker-fast">O</span>V<span class="flicker-slow">IE</span>S</h1>
     <hr>
     <search-bar></search-bar>
     <div class="m-5">

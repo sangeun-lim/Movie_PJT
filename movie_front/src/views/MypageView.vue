@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1 class="neon" data-text="U">{{ this.$route.params.username }}'s<span class="flicker-slow"> A</span>R<span class="flicker-fast">E</span>A</h1>
+    <div class="wrapper">
+      <div class="neon-wrapper">
+        <span class="txt">MY AREA</span>
+        <span class="gradient"></span>
+        <span class="dodge"></span>
+      </div>
+    </div>
     <br>
     <hr>
 
@@ -72,33 +78,73 @@
 </script>
 
 <style>
-.neon {
-  font-family: "Monoton", cursive;
-  font-size: 50px;
-  color: #ffd5ff;
-  position: relative;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, 30%);
-  font-weight: 400;
-  letter-spacing: 8px;
-  text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #ffd5ff, 3px 0px 4px #ffd5ff, 2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px, 20px 0vw 200px #d42cca, 40px 0vw 200px #d42cca;
+.navbar{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:20px;
+  color: #ffffff;
+  background:#000000;
+  font-size:20px;
+  font-weight: bold;
+  font-family: Arial;
+  text-transform: uppercase;
+  
+}
+.wrapper {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000; 
+}
+.txt {
+    color: #ffffff;
+    background:#000000;
+    font-size:100px;
+    font-weight: bold;
+    font-family: Arial;
+    text-transform: uppercase;
 }
 
-.flicker-slow {
-  animation: flicker 3s linear infinite;
+.txt::before {
+    content: 'MY AREA';
+    position: absolute;
+    mix-blend-mode: difference;
+    filter: blur(3px);
 }
-
-.flicker-fast {
-  animation: flicker 1s linear infinite;
+.neon-wrapper {
+    display:inline-flex;
+    filter: brightness(200%);
+    overflow: hidden;
 }
-
-@keyframes flicker {
-    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-    opacity: 0.99;
-  }
-    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-    opacity: 0.4;
-  }
+.gradient{
+  /*   
+  use gradpad to generate code :
+  http://ourownthing.co.uk/gradpad.html#
+  */
+    background: linear-gradient(90deg, rgba(243, 72, 104,1) 20.5625%,rgba(242, 71, 104,1) 20.5625%,rgba(158, 0, 236,1) 80.5625%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+}
+.dodge {
+    background: radial-gradient(circle,white,black 35%) center / 25% 25%;
+    position: absolute;
+    top:-100%;
+    left:-100%;
+    right:0;
+    bottom:0;
+    mix-blend-mode: color-dodge;
+    animation: dodge-area 5s linear infinite;
+}
+@keyframes dodge-area {
+    to {
+        transform: translate(50%,50%);
+    }
 }
 </style>

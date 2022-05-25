@@ -2,7 +2,7 @@
   <div>
     <movie-nav-bar></movie-nav-bar>
     <!-- <h2 class="m-4">인기영화</h2> -->
-    <h1 class="neon" data-text="U">POP<span class="flicker-slow">UL</span>AR<span class="flicker-fast"> MO</span>VIE</h1>
+    <h1 class="neon" data-text="U">P<span class="flicker-slow">OP</span>ULA<span class="flicker-fast">R</span> MOV<span class="flicker-slow">I</span>E</h1>
     <hr>
     <div class="m-5">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">

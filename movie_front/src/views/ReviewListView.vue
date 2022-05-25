@@ -2,7 +2,7 @@
   <table class="table d-flex justify-content-center">
         <thead>
           <!-- <h1>게시판(커뮤니티)</h1> -->
-          <h1 class="neon" data-text="U">WEL<span class="flicker-slow">COM </span>COM<span class="flicker-fast">MUN</span>ITY</h1>
+          <h1 class="neon" data-text="U">W<span class="flicker-slow">E</span>LCO<span class="flicker-fast">M</span> CO<span class="flicker-slow">M</span>MUN<span class="flicker-slow">IT</span>Y</h1>
           <br>
          <tr>
             <th scope="col">#</th>
