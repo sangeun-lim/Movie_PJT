@@ -22,7 +22,7 @@
           v-for="movie in randomMovies"
           :movie="movie"
           :key="movie.id"
-          class="mx-3 carousel__face text-dark"
+          class="mx-3 carousel__face text-dark a"
         ></movie-card>
       </div>
     </div>
@@ -71,11 +71,6 @@
 </script>
 
 <style scoped>
-  .a:hover {
-    transform: scale(1.4);
-    cursor: pointer;
-  }
-
   .title-font {
     font-size: 100px;
     font-family: 'Hahmlet', serif;
