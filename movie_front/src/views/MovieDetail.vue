@@ -40,8 +40,10 @@
         </div>
       </div>
     </div>
-
-    <movie-video :title="movie.title"></movie-video>
+    <div class="container mt-3">
+      <h1>VIDEO</h1>
+      <movie-video :title="movie.title"></movie-video>
+    </div>
 
     <movie-comment :comments="movie.comments"></movie-comment>
   

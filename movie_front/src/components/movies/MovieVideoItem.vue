@@ -1,10 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col">
-      <iframe :src="videoURL" frameborder="0"></iframe>
-      </div>
-    </div>
+    <iframe :src="videoURL" frameborder="0"></iframe>
   </div>
 </template>
 
@@ -25,6 +21,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+iframe {
+  width: 100%;
+  height: 300px;
+}
 </style>

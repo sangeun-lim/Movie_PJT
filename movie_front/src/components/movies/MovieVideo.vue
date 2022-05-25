@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <movie-video-item
-    v-for="(video, idx) in youtubeVideos"
-    :key="idx"
-    :video="video"
-    ></movie-video-item>
+  <div class="container">
+    <div class="row row-cols-5">
+      <movie-video-item class="col"
+      v-for="(video, idx) in youtubeVideos"
+      :key="idx"
+      :video="video"
+      ></movie-video-item>
+    </div>
   </div>
 </template>
 
