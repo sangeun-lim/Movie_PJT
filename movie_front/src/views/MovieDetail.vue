@@ -38,6 +38,8 @@
 
       <movie-comment :comments="movie.comments"></movie-comment>
     </ul>
+
+    
   </div>
 </template>
 

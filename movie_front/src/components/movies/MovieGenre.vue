@@ -1,7 +1,8 @@
 <template>
   <div>
     <movie-nav-bar></movie-nav-bar>
-    <h2>장르 선택</h2>
+    <h2 class="m-4">장르별 영화</h2>
+    <hr>
     <select v-model="genreData.selected" @change="selectGenre()" class="form-select" aria-label="Default select example">
       <option :value=28>액션</option>
       <option :value=35>코미디</option>
@@ -16,9 +17,17 @@
       <option :value=27>공포</option>
       <option :value=878>SF</option>
     </select>
-      <movie-card
+    <hr>
+      <!-- <movie-card
         v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
-      </movie-card>
+      </movie-card> -->
+    <div class="m-5">
+      <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
+        <movie-card class="col"
+        v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
+        </movie-card>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -69,6 +78,41 @@
   }
 </script>
 
-<style>
+<style scoped>
 
+.card {
+  display: flex;
+  height: 280px;
+  width: 200px;
+  background-color: #17141d;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  margin-left: -50px;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+}
+
+.card:not(:first-child) {
+    margin-left: -100px;
+}
+
+.card:hover {
+  transform: translateY(-130px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 100px;
+  transition: 0.4s ease-out;
+}
+
+.title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
 </style>

@@ -36,8 +36,6 @@ export default {
 </script>
 
 <style>
-  .a:hover {
-    transform: scale(1.4);
-    cursor: pointer;
-  }
+
+  
 </style>

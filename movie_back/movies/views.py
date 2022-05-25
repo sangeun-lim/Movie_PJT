@@ -24,7 +24,7 @@ def movie_list(request):
 
 @api_view(['GET'])
 def movie_popular(request):
-    movies = Movie.objects.filter(vote_avg__gte=8).distinct()[:10]
+    movies = Movie.objects.filter(vote_avg__gte=8).distinct()[:20]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 

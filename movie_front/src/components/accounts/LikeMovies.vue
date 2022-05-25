@@ -1,9 +1,11 @@
 <template>
-  <div class="d-flex">
-    <movie-card v-for="movie in likeMovies" 
-    :key="movie.id"
-    :movie='movie'>
-    </movie-card>
+  <div class="container">
+    <div class="d-flex">
+      <movie-card v-for="movie in likeMovies" 
+      :key="movie.id"
+      :movie='movie'>
+      </movie-card>
+    </div>
   </div>
 </template>
 
@@ -29,6 +31,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

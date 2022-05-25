@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar></nav-bar>
 
-    <router-view/>
+    <router-view  class="slide-in"/>
   </div>
 </template>
 
@@ -34,7 +34,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    font-family: 'Gamja Flower', cursive;
+    font-family: 'IBM Plex Sans KR', sans-serif;
     color: white;
   }
 
