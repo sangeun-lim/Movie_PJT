@@ -3,7 +3,7 @@
         <thead>
           <!-- <h1>게시판(커뮤니티)</h1> -->
           <div class="wrapper">
-            <div class="blackpink">CMMUNITY</div>
+            <div class="blackpink">COMMUNITY</div>
           </div>
           <br>
          <tr>
