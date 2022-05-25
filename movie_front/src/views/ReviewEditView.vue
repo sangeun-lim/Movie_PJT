@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>게시글 수정</h1>
+    <h1 class="neon-h1">Update</h1>
     <review-form v-if="isReview" :review="review" action="update">
     </review-form>
   </div>
@@ -28,5 +28,9 @@ export default {
 </script>
 
 <style>
+.neon-h1 {
+  color: #f1aad7;
+  text-shadow: 0 0 5px #FE1DAD, 0 0 15px #FE1DAD;
+}
 
 </style>

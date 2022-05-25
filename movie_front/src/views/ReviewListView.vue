@@ -1,39 +1,55 @@
 <template>
   <table class="table d-flex justify-content-center">
-        <thead>
-          <!-- <h1>게시판(커뮤니티)</h1> -->
-          <div class="wrapper">
-            <div class="blackpink">COMMUNITY</div>
-          </div>
-          <br>
-         <tr>
-            <th scope="col">#</th>
-            <th scope="col">작성자</th>
-            <th scope="col">제목</th>
-            <th scope="col">댓글 수</th>
-            <th scope="col">좋아요 수</th>
-            <th scope="col">작성 시간</th>
-            <th scope="col">수정 시간</th>
-          </tr>
-          <tr v-for="review in reviews" :key="review.pk">
-            <th >{{review.pk}}</th>
-            <th> {{review.user.username}} </th>
-            <th> <router-link :to="{ name: 'review', params: {reviewPk: review.pk} }" class="text-decoration-none">
-            {{ review.title }}
-          </router-link></th>
-            <th>{{review.comment_count}}</th>
-            <th>{{review.like_count}}</th>
-            <th>{{review.created_at | moment("YYYY년 MMMM Do a h:mm") }}</th>
-            <th>{{review.updated_at | moment("YYYY년 MMMM Do a h:mm")  }}</th>
-          </tr>
-    <br>
-    <br>
-    <!-- <div style="width:100px; height:30px; border: solid pink; margin-left:90%;"> -->
-      <div class="frame">
-        <router-link v-if="isLoggedIn" :to="{ name: 'reviewNew'}" class="text-decoration-none custom-btn btn-14">Create</router-link>\
+    <thead>
+      <!-- <h1>게시판(커뮤니티)</h1> -->
+      <div class="wrapper my-5">
+        <div class="blackpink">COMMUNITY</div>
       </div>
-    <!-- </div> -->
-        </thead>
+      <!-- <tr>
+        <th scope="col">#</th>
+        <th scope="col">작성자</th>
+        <th scope="col">제목</th>
+        <th scope="col">댓글 수</th>
+        <th scope="col">좋아요 수</th>
+        <th scope="col">작성 시간</th>
+        <th scope="col">수정 시간</th>
+      </tr>
+      <tr v-for="review in reviews" :key="review.pk">
+        <th >{{review.pk}}</th>
+        <th> {{review.user.username}} </th>
+        <th> <router-link :to="{ name: 'review', params: {reviewPk: review.pk} }" class="text-decoration-none">
+        {{ review.title }}
+      </router-link></th>
+        <th>{{review.comment_count}}</th>
+        <th>{{review.like_count}}</th>
+        <th>{{review.created_at | moment("YYYY년 MMMM Do a h:mm") }}</th>
+        <th>{{review.updated_at | moment("YYYY년 MMMM Do a h:mm")  }}</th>
+      </tr> -->
+      <center>
+        <tr class="table-title">
+          <th scope="col">username</th>
+          <th scope="col">title</th>
+          <th scope="col">comment</th>
+          <th scope="col">like</th>
+          <!-- <th scope="col">created time</th> -->
+          <!-- <th scope="col">updated time</th> -->
+        </tr>
+        <tr v-for="review in reviews" :key="review.pk">
+          <th> {{review.user.username}} </th>
+          <th>{{ review.title }}</th>
+          <th>{{review.comment_count}}</th>
+          <th>{{review.like_count}}</th>
+          <!-- <th>{{review.created_at | moment("YYYY년 MMMM Do a h:mm") }}</th> -->
+          <!-- <th>{{review.updated_at | moment("YYYY년 MMMM Do a h:mm")  }}</th> -->
+          <router-link v-if="isLoggedIn" :to="{  name: 'review', params: {reviewPk: review.pk} }" class="text-decoration-none custom-btn btn-14 p-1 m-3" style="width: 90px">Detail</router-link>
+        </tr>
+      </center>
+
+      <div class="frame">
+        <router-link v-if="isLoggedIn" :to="{ name: 'reviewNew'}" class="text-decoration-none custom-btn btn-14">New</router-link>
+      </div>
+
+    </thead>
 
   </table>
 
@@ -59,25 +75,32 @@ export default {
 <style scoped>
 table {
   border-collapse: collapse;
-  
+  color: white;
+  font-size: 1.2rem;
 }
 tr {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-tr:nth-child(odd) {
+th {
+  padding: 15px;
+}
+.table-title {
+  font-size: 1.5rem;
+  color: #FE1DAD
+}
+/* tr:nth-child(odd) {
   background-color: #f3c6e4;
+  border: none;
 }
 tr:nth-child(even) {
   background-color: #f4c7fa;
+  border: none;
 }
 tr:hover {
   background-color : #ffc5c2;
   cursor: pointer;
-}
-td {
-  padding: 5px;
-}
+} */
 
  /* title */
 .wrapper{

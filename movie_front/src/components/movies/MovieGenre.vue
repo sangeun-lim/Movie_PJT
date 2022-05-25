@@ -5,7 +5,7 @@
     <h1 class="neon" data-text="U">S<span class="flicker-slow">EL</span>EC<span class="flicker-fast">T</span> BY GEN<span class="flicker-slow">R</span>E</h1>
     <br>
     <form>
-      <label for="">선택</label>
+      <label for=""></label>
       <select v-model="genreData.selected" @change="selectGenre()" >
         <!-- <option disabled >-- 선택하세요 --</option> -->
         <option :value=28>액션</option>
@@ -71,31 +71,33 @@
 </script>
 
 <style scoped>
+/* select */
 select {
   /* -moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none; */
 
-  color: #444;
-  background-color: #fff;
+  color: white;
+  background-color: black;
 
   padding: 0.6em 1.4em 0.5em 0.8em;
   margin: 0;
+  width: 200px;
 
-  border: 1px solid #aaa;
-  border-radius: 0.5em;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border: 2px solid #f7b5f2;
+  border-radius: 1em;
+  box-shadow: 0 0 7px 4px #f7b5f2, 0 0 7px 4px #f7b5f2 inset;
 }
 
 select:hover {
-  border-color: #888;
+  border-color: #d42cca;
 }
 
 select:focus {
-  border-color: #aaa;
+  border-color: #d42cca;
   box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
+  box-shadow: 0 0 7px 4px #d42cca, 0 0 7px 4px #d42cca inset;
+  color: white;
   outline: none;
 }
 
@@ -103,6 +105,13 @@ select:disabled {
   opacity: 0.5;
 }
 
+option {
+  color: white;
+  font-size: 17px;
+}
+
+
+/* card */
 .card {
   display: flex;
   height: 280px;

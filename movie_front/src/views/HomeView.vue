@@ -95,7 +95,7 @@
 h1 {
   margin: auto;
   font-size: 5rem;
-  font-weight: 300;
+  font-weight: 400;
   animation: lights 5s 750ms linear infinite;
 }
 </style>

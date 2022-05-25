@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar></nav-bar>
 
-    <router-view  class="slide-in"/>
+    <router-view class="slide-in"/>
   </div>
 </template>
 
