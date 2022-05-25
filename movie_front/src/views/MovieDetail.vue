@@ -1,105 +1,62 @@
 <template>
   <div>
-    <!-- {{movie.title}}
-    {{movie.overview}} -->
-    <ul>
-      <li>
-      <img :src="poster" class="card-img-top" alt="movieImg" style="width: 25vw; min-width: 140px;">
-
-      </li>
-      <br>
-      <p>
-        {{movie.title}}
-      </p>
-      <br>
-      {{movie.overview}}
-      <br>
-      {{movie.released_date}}
-      <br>
-      {{movie.vote_avg}}
-      <br>
-      {{movie.like_users_count}}
-      <br>
-      <p v-for="genre in movie.genres" :key="genre.pk">{{ genre.genre_name }}</p>
-      <br>
-      <p v-for="actor in movie.actors" :key="actor.name">{{actor.name}}
-        <!-- <img src="https://www.themoviedb.org/t/p/original{{actor.profile_path}}">{{actor.profile_path}}</p> -->
-      <br>
-      <!-- <movie-video :title="movie.title"></movie-video> -->
-      
-      <div class="movie-card">
-        <div class="poster-wrapper">
-          <div class="poster">
-            <img :src="poster" alt="poster" />
-          </div>
-        </div>
-        <!-- end poster-wrapper -->
-        <div class="movie-info text-start">
-          <div class="header-section">
-            <h2 class="fw-bold">{{movie.title}}</h2>
-            <div class="d-flex">
-              <p v-for="genre in movie.genres" :key="genre.pk">| {{ genre.genre_name }} |</p>
-            </div>
-            <div class="extra">
-              <div class="ratings"><p>평점 : {{movie.vote_avg}}</p></div>
-            </div>
-          </div>
-          <div class="cast-section">
-            <h3 class="fw-bold">THE CAST</h3>
-            <div class="casts">
-              <!-- <p v-for="actor in movie.actors" :key="actor.name">
-                <img src="https://www.themoviedb.org/t/p/original{{actor.profile_path}}" alt="avatar" />
-              </p> -->
-              <img src="https://m.media-amazon.com/images/M/MV5BNDg4OTczODE5Nl5BMl5BanBnXkFtZTcwMjgwMjA0Mg@@._V1_UY44_CR3,0,32,44_AL_.jpg" alt="avatar" />
-              <img src="https://m.media-amazon.com/images/M/MV5BOTkyNDE4NTA4NF5BMl5BanBnXkFtZTgwOTY3ODQ1MDI@._V1_UY44_CR3,0,32,44_AL_.jpg" alt="avatar" />
-              <img src="https://m.media-amazon.com/images/M/MV5BNzYwMTQ1ODY1MV5BMl5BanBnXkFtZTgwMTU5NDc5OTE@._V1_UY44_CR17,0,32,44_AL_.jpg" alt="avatar" />
-              <img src="https://m.media-amazon.com/images/M/MV5BMTEyMDA1MzE0NjdeQTJeQWpwZ15BbWU3MDM0NzA4MDQ@._V1_UY44_CR1,0,32,44_AL_.jpg" alt="avatar" />
-            </div>
-            <div class="casts">
-              <p v-for="actor in movie.actors" :key="actor.name">{{actor.name}}</p>
-            </div>
-          </div>
-          <div class="synopsis-section">
-            <h3>SYNOPSIS</h3>
-            <p class="fw-bold">{{movie.overview}}</p>
-          </div>
-          <div class="gallery-section">
-            <h3>VIDEO / PICTURE</h3>
-            <div class="gallery">
-              <div class="small"><img src="https://m.media-amazon.com/images/M/MV5BYzkyNGViZDItYzFkMy00OGM0LTg3NzktZGVkZjM2Mzk1OGEzXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg" alt="media" /></div>
-              <div class="medium"><img src="https://m.media-amazon.com/images/M/MV5BNTkxOGIwYzUtNzc0ZS00MTBkLWFkODItYzEzNGRkN2E3MTAxXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg" alt="media" /></div>
-              <div class="small"><img src="https://m.media-amazon.com/images/M/MV5BMzg2OTY3MjE3OF5BMl5BanBnXkFtZTgwNTkxMDU0MDI@._V1_SX1777_CR0,0,1777,745_AL_.jpg" alt="media" /></div>
-            </div>
-          </div>
+    <div class="movie-card">
+      <div class="poster-wrapper">
+        <div class="poster">
+          <img :src="poster" alt="poster" />
         </div>
       </div>
-      <!-- end movie-card -->
-
-      <div v-if="isLoggedIn">
+      <!-- end poster-wrapper -->
+      <div class="movie-info text-start">
+        <div class="header-section">
+          <h2 class="fw-bold">{{movie.title}}</h2>
+          <p>{{movie.released_date}}</p>
+          <div class="d-flex">
+            <p v-for="genre in movie.genres" :key="genre.pk">| {{ genre.genre_name }} |</p>
+          </div>
+          <div class="extra">
+            <div class="ratings"><p>평점 : {{movie.vote_avg}}</p></div>
+          </div>
+        </div>
+        <div class="cast-section">
+          <h3 class="fw-bold">THE CAST</h3>
+          <div class="casts">
+            <p v-for="actor in movie.actors" :key="actor.name">
+              <img :src="`https://www.themoviedb.org/t/p/original${actor.profile_path}`" alt="avatar" class="mb-2"/>
+              {{ actor.name }}
+            </p>
+          </div>
+        </div>
+        <div class="synopsis-section">
+          <h3 class="fw-bold">SYNOPSIS</h3>
+          <p>{{movie.overview}}</p>
+        </div>
         <div>
-        Likeit:
           <button
             @click="likeMovie(moviePk)"
-          >{{ likeCount }}</button>
+          class="btn"><i class="fa-solid fa-heart" style="color:red;"></i>
+          </button>
+          {{ likeCount }}
         </div>
-        <br>
       </div>
+    </div>
 
-      <movie-comment :comments="movie.comments"></movie-comment>
-    </ul>
+    <movie-video :title="movie.title"></movie-video>
+
+    <movie-comment :comments="movie.comments"></movie-comment>
   
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-// import MovieVideo from '@/components/movies/MovieVideo.vue'
+import MovieVideo from '@/components/movies/MovieVideo.vue'
 import MovieComment from '@/components/movies/MovieComment.vue'
 
 export default {
   name: 'MovieDetail',
   components: {
-    // MovieVideo, 
+    MovieVideo, 
     MovieComment
   },
   data() {
