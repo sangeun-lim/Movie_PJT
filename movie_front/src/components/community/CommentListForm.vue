@@ -28,7 +28,7 @@
             </tr>
             
             <div>
-                  <button class="btn btn-dark mt-3">comment</button>
+              <button class="btn btn-dark mt-3">comment</button>
             </div>
           </table>
         </td>

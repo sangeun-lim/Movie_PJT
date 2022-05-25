@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+
     <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -17,14 +17,17 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
       </button>
     </div> -->
-    <div class="m-12">
+    <div class="m-4">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
-        <movie-card class="col"
-        v-for="movie in likeMovies" :key="movie.id" :movie='movie'>
+        <movie-card 
+        class="col"
+        v-for="movie in likeMovies" 
+        :key="movie.id" 
+        :movie='movie'>
         </movie-card>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
