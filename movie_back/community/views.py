@@ -81,7 +81,6 @@ def review_update_or_delete(request, review_pk):
         return update_review()
     elif request.method == 'DELETE':
         return delete_review()
-    
 
 # 댓글(리뷰)의 목록 조회 및 대댓글 생성
 @api_view(['GET', 'POST'])
