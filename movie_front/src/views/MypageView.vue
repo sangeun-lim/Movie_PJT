@@ -10,16 +10,16 @@
     <br>
     <hr>
 
-    <h3>좋아요 누른 영화</h3>
+    <h1 class="mypage-title">My Favorite Movie</h1>
     <like-movies :likeMovies="mypage.like_movies"></like-movies>
     <hr>
     
     <!-- <h3>선호하는 장르 : </h3> -->
-    <h3>{{ this.$route.params.username }}님이 좋아할 만한 영화</h3>
+    <h1 class="mypage-title">Recommended Movie For {{ this.$route.params.username }}</h1>
     <like-genre :likeGenreDic="likeGenreDic"></like-genre>
     <hr>
     
-    <h3>내가 쓴 글</h3>
+    <h1 class="mypage-title">My Review</h1>
     <my-review :reviews="mypage.reviews"></my-review>
     <hr>
   </div>
@@ -147,5 +147,99 @@
     to {
         transform: translate(50%,50%);
     }
+}
+
+/* title */
+@keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(230, 100%, 95%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+}
+
+.mypage-title {
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  /* transform: translateX(-50%) translateY(-50%); */
+  font: 50px arial;
+  text-align: center;
+  text-shadow: 
+    0px 0px 3px #fff, 
+    0px 0px 7px #fff, 
+    0px 0px 10px #fff, 
+    0px 0px 16px #e542f4, 
+    0px 0px 25px #e542f4, 
+    0px 0px 40px #e542f4;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% { text-shadow: 
+    0px 0px 3px #fff, 
+    0px 0px 7px #fff, 
+    0px 0px 10px #fff, 
+    0px 0px 16px #e542f4, 
+    0px 0px 25px #e542f4, 
+    0px 0px 40px #e542f4; }
+  50% {
+    text-shadow: 
+    0px 0px 1px #fff, 
+    0px 0px 3px #fff, 
+    0px 0px 5px #fff, 
+    0px 0px 10px #e542f4, 
+    0px 0px 20px #e542f4, 
+    0px 0px 30px #e542f4;
+  }
+  100% {
+    text-shadow: 
+    0px 0px 3px #fff, 
+    0px 0px 7px #fff, 
+    0px 0px 10px #fff, 
+    0px 0px 16px #e542f4, 
+    0px 0px 25px #e542f4, 
+    0px 0px 40px #e542f4;
+  }
 }
 </style>
