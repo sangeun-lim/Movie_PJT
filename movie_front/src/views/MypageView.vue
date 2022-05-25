@@ -13,6 +13,7 @@
     <h3>좋아요 누른 영화</h3>
     <like-movies :likeMovies="mypage.like_movies"></like-movies>
     <hr>
+    
     <!-- <h3>선호하는 장르 : </h3> -->
     <h3>{{ this.$route.params.username }}님이 좋아할 만한 영화</h3>
     <like-genre :likeGenreDic="likeGenreDic"></like-genre>
