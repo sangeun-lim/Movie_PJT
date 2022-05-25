@@ -15,7 +15,7 @@
           <i class="input-icon uil uil-at"></i>
         </div>
         <div class="form-group mt-2">
-          <input v-model="credentials.password2" type="password" id="password2" class="form-style" placeholder="Password" autocomplete="off"  required />
+          <input v-model="credentials.password2" type="password" id="password2" class="form-style" placeholder="Password Check Up" autocomplete="off"  required />
           <i class="input-icon uil uil-lock-alt"></i>
         </div>
         <button href="#" class="btn mt-4">submit</button>
