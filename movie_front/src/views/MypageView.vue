@@ -1,9 +1,7 @@
 <template>
   <div>
-    <!-- 여기는 다른 사용자의 프로필을 보는 것이 아닌 개인의 마이페이지를 보는프로필임 -->
-    <h1>MY PAGE</h1>
-    <!-- 회원정보수정을 기본값으로 주고 다른 페이지는 라우터로 -->
-    <h1>{{ this.$route.params.username }}</h1>
+    <h1 class="neon" data-text="U">{{ this.$route.params.username }}'s<span class="flicker-slow"> A</span>R<span class="flicker-fast">E</span>A</h1>
+    <br>
     <hr>
 
     <h3>좋아요 누른 영화</h3>
@@ -13,6 +11,7 @@
     <h3>{{ this.$route.params.username }}님이 좋아할 만한 영화</h3>
     <like-genre :likeGenreDic="likeGenreDic"></like-genre>
     <hr>
+    
     <h3>내가 쓴 글</h3>
     <my-review :reviews="mypage.reviews"></my-review>
     <hr>
@@ -73,5 +72,33 @@
 </script>
 
 <style>
+.neon {
+  font-family: "Monoton", cursive;
+  font-size: 50px;
+  color: #ffd5ff;
+  position: relative;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #ffd5ff, 3px 0px 4px #ffd5ff, 2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px, 20px 0vw 200px #d42cca, 40px 0vw 200px #d42cca;
+}
 
+.flicker-slow {
+  animation: flicker 3s linear infinite;
+}
+
+.flicker-fast {
+  animation: flicker 1s linear infinite;
+}
+
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+  }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+  }
+}
 </style>

@@ -1,26 +1,28 @@
 <template>
   <div>
     <movie-nav-bar></movie-nav-bar>
-    <h2 class="m-4">장르별 영화</h2>
+    <!-- <h2 class="m-4">장르별 영화</h2> -->
+    <h1 class="neon" data-text="U">SEL<span class="flicker-slow">ECT </span>BY<span class="flicker-fast"> GE</span>NRE</h1>
     <hr>
-    <select v-model="genreData.selected" @change="selectGenre()" class="form-select" aria-label="Default select example">
-      <option :value=28>액션</option>
-      <option :value=35>코미디</option>
-      <option :value=10749>로맨스</option>
-      <option :value=16>애니메이션</option>
-      <option :value=12>모험</option>
-      <option :value=80>범죄</option>
-      <option :value=99>다큐멘터리</option>
-      <option :value=18>드라마</option>
-      <option :value=10751>가족</option>
-      <option :value=14>판타지</option>
-      <option :value=27>공포</option>
-      <option :value=878>SF</option>
-    </select>
+    <form>
+      <label for="">선택</label>
+      <select v-model="genreData.selected" @change="selectGenre()" >
+        <!-- <option disabled >-- 선택하세요 --</option> -->
+        <option :value=28>액션</option>
+        <option :value=35>코미디</option>
+        <option :value=10749>로맨스</option>
+        <option :value=16>애니메이션</option>
+        <option :value=12>모험</option>
+        <option :value=80>범죄</option>
+        <option :value=99>다큐멘터리</option>
+        <option :value=18>드라마</option>
+        <option :value=10751>가족</option>
+        <option :value=14>판타지</option>
+        <option :value=27>공포</option>
+        <option :value=878>SF</option>
+      </select>
+    </form>
     <hr>
-      <!-- <movie-card
-        v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
-      </movie-card> -->
     <div class="m-5">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
         <movie-card class="col"
@@ -60,25 +62,46 @@
         const searchURL = 'http://localhost:8000/api/v1/movies/genres/'
         axios.post(searchURL, this.genreData)
           .then(res => {
-            console.log(this.genreData)
+
             this.genreMovies = res.data
           })
       },
     },
-    // created () {
-    //   axios({
-    //     url: drf.movies.movieGenre(),
-    //     method: 'post',
-    //   })
-    //     .then(res => {
-    //       console.log(res.data)
-    //       this.genreMovies = res.data
-    //     })
-    // },
   }
 </script>
 
 <style scoped>
+select {
+  /* -moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none; */
+
+  color: #444;
+  background-color: #fff;
+
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+select:disabled {
+  opacity: 0.5;
+}
 
 .card {
   display: flex;
@@ -114,5 +137,35 @@
   position: absolute;
   left: 20px;
   top: 15px;
+}
+
+.neon {
+  font-family: "Monoton", cursive;
+  font-size: 50px;
+  color: #ffd5ff;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-shadow: 1px 0px 4px #ffd5ff, 2px 0px 4px #ffd5ff, 3px 0px 4px #ffd5ff, 2px 0px 3px #d42cca, 2px 3px 15px #d42cca, 2px 0px 15px, 5px 0px 125px, 20px 0vw 200px #d42cca, 40px 0vw 200px #d42cca;
+}
+
+.flicker-slow {
+  animation: flicker 3s linear infinite;
+}
+
+.flicker-fast {
+  animation: flicker 1s linear infinite;
+}
+
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+  }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+  }
 }
 </style>

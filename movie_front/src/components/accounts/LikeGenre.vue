@@ -1,18 +1,15 @@
 <template>
-  <div>
-    <div class="d-flex justify-content-center">
-      <div class="col-12">
-        <div class="row">
-          <movie-card
-          v-for="movie in randomMovies"
-          :movie="movie"
-          :key="movie.id"
-          class="mx-3"
-          ></movie-card>
-        </div>
-      </div>
+  <div class="m-7">
+    <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
+      <movie-card
+      v-for="movie in randomMovies"
+      :movie="movie"
+      :key="movie.id"
+      class="col mb-7"
+      ></movie-card>
     </div>
   </div>
+
 </template>
 
 <script>

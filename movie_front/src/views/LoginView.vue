@@ -1,5 +1,5 @@
 <template>
-<!-- css 꾸미기 -->
+
   <div>
     <account-error-list v-if="authError"></account-error-list>
 
@@ -81,7 +81,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .body {
   font-family: "Poppins", sans-serif;
 }

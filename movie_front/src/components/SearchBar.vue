@@ -7,10 +7,10 @@
     </div>
     <div class="row" >
       <div class="col-12 col-md-6 col-lg-3 my-3" v-for="movie in searchMovies" :key="movie.id">
-        <div class="card jhyuk-img shadow" style="width: 16rem;">
-          <!-- <img @click="onMovieSelect(movie)" :movie="movie" :src="movie.poster" class="card-img-top" alt="movie.title"> -->
+        <div class="card shadow" style="width: 16rem;">
+          <!-- <img @click="onMovieSelect(movie)" :movie="movie" :src="movie.poster_path" class="card-img-top" alt="movie.title"> -->
           <div class="card-body">
-            <h4 class="card-title">{{ movie.title }}</h4>
+            <h4 class="card-title text-dark" >{{ movie.title }}</h4>
             <h6 class="card-text text-secondary">{{ movie.released_date }}</h6>
           </div>
         </div>
