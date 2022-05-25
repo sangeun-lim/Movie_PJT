@@ -30,6 +30,9 @@
       MovieNavBar,
       SearchBar
     },
+    // props: {
+    //   search : Boolean
+    // },
     computed: {
       ...mapGetters(['movieData'])
     }

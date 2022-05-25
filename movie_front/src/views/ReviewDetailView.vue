@@ -29,7 +29,7 @@
       <div>
         <strong class="w3-large">{{ review.username }}</strong>
         <br>
-        <span>{{ created_at }}</span>
+        <span>{{ review.created_at }}</span>
       </div>
     </div>
     <div class="board-contents">
