@@ -30,9 +30,10 @@ class MypageSerializer(serializers.ModelSerializer):
 
     class ReviewSerializer(serializers.ModelSerializer):
 
+        like_users_count = serializers.IntegerField(source='like_users.count', read_only=True)
         class Meta:
             model = Review
-            fields = ('pk', 'title')
+            fields = ('pk', 'title', 'created_at', 'like_users_count' )
     
     reviews = ReviewSerializer(many=True)
     
