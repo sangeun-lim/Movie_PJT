@@ -140,7 +140,7 @@ select:disabled {
 }
 
 .neon {
-  font-family: "Monoton", cursive;
+  /* font-family: "Monoton", cursive; */
   font-size: 50px;
   color: #ffd5ff;
   position: relative;
