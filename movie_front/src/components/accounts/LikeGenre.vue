@@ -57,7 +57,7 @@
   width: 50%;
   background-color: #17141d;
   border-radius: 10px;
-  /* box-shadow: -1rem 0 3rem #000; */
+  box-shadow: -1rem 0 3rem #000;
   margin-left: -50px;
   transition: 0.4s ease-out;
   position: relative;
@@ -70,13 +70,13 @@
 
 .card:hover {
   transform: translateY(-140px);
-  transition: 0.4s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .card:hover ~ .card {
   position: relative;
   left: 100px;
-  transition: 0.4s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .title {

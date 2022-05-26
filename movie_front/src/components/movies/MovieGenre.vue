@@ -25,7 +25,7 @@
     <hr>
     <div class="m-5">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
-        <movie-card class="col"
+        <movie-card class="col mb-5"
         v-for="movie in genreMovies" :key="movie.id" :movie='movie'>
         </movie-card>
       </div>
@@ -131,7 +131,7 @@ option {
 }
 
 .card:hover {
-  transform: translateY(-130px);
+  transform: translateY(-100px);
   transition: 0.4s ease-out;
 }
 

@@ -6,7 +6,7 @@
     <br>
     <div class="m-5">
       <div class="my-5 ms-5 me-3 d-flex justify-content-center row row-cols-6">
-        <movie-card class="col"
+        <movie-card class="col mb-5"
         v-for="movie in popularMovies" :key="movie.id" :movie='movie'>
         </movie-card>
       </div>
@@ -68,7 +68,7 @@
 }
 
 .card:hover {
-  transform: translateY(-140px);
+  transform: translateY(-100px);
   transition: 0.4s ease-out;
 }
 

@@ -53,8 +53,8 @@ export default {
   width: 50%;
   background-color: #17141d;
   border-radius: 10px;
-  /* box-shadow: -1rem 0 3rem #000; */
-  /* margin-left: -50px; */
+  box-shadow: -1rem 0 3rem #000;
+  margin-left: -50px;
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
