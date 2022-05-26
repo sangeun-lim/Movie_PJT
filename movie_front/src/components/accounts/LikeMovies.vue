@@ -66,13 +66,13 @@ export default {
 
 .card:hover {
   transform: translateY(-140px);
-  transition: 0.4s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .card:hover ~ .card {
   position: relative;
   left: 100px;
-  transition: 0.4s ease-out;
+  transition: 0.7s ease-out;
 }
 
 .title {
