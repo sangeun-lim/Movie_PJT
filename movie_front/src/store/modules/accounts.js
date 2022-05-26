@@ -136,7 +136,7 @@ export default{
       })
         .then(() => {
           dispatch('removeToken')
-          alert('로그아웃 되었습니다.')
+          alert('로그아웃 되었습니다 ☺')
           router.push({ name: 'login' })
         })
         // 약간의 수정 필요할수도 

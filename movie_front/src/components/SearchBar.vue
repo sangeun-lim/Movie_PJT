@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-center">
       <div>
-        <input type="text" v-model="searchData.keyword" class="mx-2 search-input mb-0 pb-0" placeholder="Search">
+        <input type="text" v-model="searchData.keyword" class="mx-2 search-input mb-0 pb-0" placeholder="Search" id="search">
         <hr>
       </div>
       <button @click="searchMovie" class="custom-btn btn-14">Search</button>
@@ -53,11 +53,16 @@ export default {
   },
   methods: {
     searchMovie() {
-      const searchURL = 'http://localhost:8000/api/v1/movies/search/'
-      axios.post(searchURL, this.searchData)
-      .then(res => {
-        this.searchMovies = res.data
-      })
+      const content = document.getElementById("search").value
+      if (content.trim() === '') {
+        alert("검색어를 입력하세요 😮")
+      } else {
+          const searchURL = 'http://localhost:8000/api/v1/movies/search/'
+          axios.post(searchURL, this.searchData)
+          .then(res => {
+            this.searchMovies = res.data
+          })
+      }
     },
     onMovieSelect(movie) {
       this.$router.push(`/movie/${movie.id}`)
