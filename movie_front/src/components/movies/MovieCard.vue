@@ -4,13 +4,13 @@
     <div class="card-body">
         <p>개봉일 : {{ movie.released_date }}</p>
         <p>평점 : {{ movie.vote_avg }}</p>
-        <!-- <div>
+        <div>
           <p style="color: black "><i class="fa-solid fa-star fa-2x" style="color: yellow">
             </i><strong>
             {{ movie.vote_avg }}
             </strong>
             </p>
-        </div> -->
+        </div>
       <div class="d-flex justify-content-between">
         <p v-for="genre in movie.genres" :key="genre.pk">{{ genre.genre_name }}</p>
       </div>
@@ -45,7 +45,7 @@ export default {
     cursor: pointer;
   }
 
-  /* .card .card-body {
+  .card .card-body {
     transform: translateY(100%);
     opacity: 0;
     transition: 0.3s ease-in-out;
@@ -55,5 +55,5 @@ export default {
     transform: translateY(0);
     opacity: 1;
     position: absolute;
-  } */
+  }
 </style>

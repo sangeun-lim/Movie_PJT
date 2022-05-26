@@ -87,6 +87,8 @@ select {
   border: 2px solid #f7b5f2;
   border-radius: 1em;
   box-shadow: 0 0 7px 4px #f7b5f2, 0 0 7px 4px #f7b5f2 inset;
+
+  cursor:pointer;
 }
 
 select:hover {
@@ -109,7 +111,6 @@ option {
   color: white;
   font-size: 17px;
 }
-
 
 /* card */
 .card {
